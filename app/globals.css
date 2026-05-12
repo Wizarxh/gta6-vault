@@ -1,26 +1,130 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --vc-bg: #0a0a0a;
+  --vc-bg-elev: #131018;
+  --vc-pink: #ff6b9d;
+  --vc-cyan: #00d4ff;
+  --vc-purple: #7b2cbf;
+  --vc-yellow: #ffd23f;
+  --vc-text: #f5f3ff;
+  --vc-muted: #9aa0b4;
+  --vc-border: rgba(255, 107, 157, 0.18);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--vc-bg);
+  --color-foreground: var(--vc-text);
+  --color-vc-pink: var(--vc-pink);
+  --color-vc-cyan: var(--vc-cyan);
+  --color-vc-purple: var(--vc-purple);
+  --color-vc-yellow: var(--vc-yellow);
+  --color-vc-muted: var(--vc-muted);
+  --color-vc-border: var(--vc-border);
+  --font-sans: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  background: var(--vc-bg);
+  color: var(--vc-text);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  background-image:
+    radial-gradient(
+      1200px 600px at 80% -10%,
+      rgba(255, 107, 157, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at -10% 10%,
+      rgba(0, 212, 255, 0.14),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #0a0a0a 0%, #0a0a0a 100%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: var(--vc-pink);
+  color: #0a0a0a;
+}
+
+.outrun-grid {
+  background-image:
+    linear-gradient(transparent 95%, rgba(255, 107, 157, 0.35) 95%),
+    linear-gradient(90deg, transparent 95%, rgba(0, 212, 255, 0.35) 95%);
+  background-size: 40px 40px;
+  background-position: center bottom;
+  transform: perspective(600px) rotateX(60deg);
+  transform-origin: 50% 100%;
+  mask-image: linear-gradient(to top, black 0%, transparent 80%);
+  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 80%);
+}
+
+.neon-text {
+  text-shadow:
+    0 0 1px rgba(255, 107, 157, 0.6),
+    0 0 16px rgba(255, 107, 157, 0.45),
+    0 0 32px rgba(0, 212, 255, 0.25);
+}
+
+.neon-border {
+  box-shadow:
+    0 0 0 1px rgba(255, 107, 157, 0.35),
+    0 0 24px rgba(255, 107, 157, 0.18),
+    0 0 48px rgba(0, 212, 255, 0.12);
+}
+
+.chrome-text {
+  background: linear-gradient(180deg, #ff6b9d 0%, #ffd23f 45%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.scanline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02) 0px,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+}
+
+@keyframes vc-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.vc-pulse {
+  animation: vc-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes vc-marquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.vc-marquee {
+  animation: vc-marquee 45s linear infinite;
 }
