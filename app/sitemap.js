@@ -14,5 +14,6 @@ export default function sitemap() {
     changeFrequency: "weekly",
     priority: 0.8,
   }));
+  // Draft articles are excluded from sitemap (noindex)
   return [...staticEntries, ...articleEntries];
 }
