@@ -50,9 +50,7 @@ export default async function Image({ params }) {
           style={{
             position: "absolute",
             inset: 0,
-            background:
-              "linear-gradient(180deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.85) 100%)",
-            display: "flex",
+            background: "linear-gradient(180deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.85) 100%)",
           }}
         />
 
@@ -95,24 +93,22 @@ export default async function Image({ params }) {
               <span style={{ color: "#00D4FF" }}>Vault</span>
             </div>
           </div>
-          <div style={{ display: "flex", gap: 12 }}>
-            <div
-              style={{
-                padding: "8px 16px",
-                border: `2px solid ${accent}`,
-                color: accent,
-                background: "rgba(0,0,0,0.45)",
-                borderRadius: 999,
-                fontSize: 16,
-                fontWeight: 600,
-              }}
-            >
-              {status}
-            </div>
+          <div
+            style={{
+              padding: "8px 16px",
+              border: `2px solid ${accent}`,
+              color: accent,
+              background: "rgba(0,0,0,0.45)",
+              borderRadius: 999,
+              fontSize: 16,
+              fontWeight: 600,
+            }}
+          >
+            {status}
           </div>
         </div>
 
-        <div style={{ zIndex: 10 }}>
+        <div style={{ display: "flex", flexDirection: "column", zIndex: 10 }}>
           <h1
             style={{
               fontSize: 56,
@@ -124,14 +120,7 @@ export default async function Image({ params }) {
           >
             {title}
           </h1>
-          <div
-            style={{
-              display: "flex",
-              gap: 20,
-              fontSize: 18,
-              color: "rgba(255,255,255,0.8)",
-            }}
-          >
+          <div style={{ display: "flex", gap: 20, fontSize: 18, color: "rgba(255,255,255,0.8)" }}>
             <span>{category}</span>
           </div>
         </div>
