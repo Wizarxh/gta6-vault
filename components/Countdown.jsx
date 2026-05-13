@@ -2,16 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-function diff(target) {
-  if (typeof window === "undefined") return { days: 0, hours: 0, minutes: 0, seconds: 0, total: 1 };
-  const total = Math.max(0, target - Date.now());
-  const days = Math.floor(total / 86400000);
-  const hours = Math.floor((total % 86400000) / 3600000);
-  const minutes = Math.floor((total % 3600000) / 60000);
-  const seconds = Math.floor((total % 60000) / 1000);
-  return { days, hours, minutes, seconds, total };
-}
-
 function Cell({ label, value }) {
   const padded = String(value).padStart(2, "0");
   return (
@@ -27,16 +17,41 @@ function Cell({ label, value }) {
 }
 
 export default function Countdown({ targetISO }) {
-  const target = new Date(targetISO).getTime();
   const [t, setT] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, total: 1 });
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setT(diff(target));
-    const interval = setInterval(() => {
-      setT(diff(target));
-    }, 1000);
+    setMounted(true);
+    const target = new Date(targetISO).getTime();
+
+    const updateCountdown = () => {
+      const total = Math.max(0, target - Date.now());
+      const days = Math.floor(total / 86400000);
+      const hours = Math.floor((total % 86400000) / 3600000);
+      const minutes = Math.floor((total % 3600000) / 60000);
+      const seconds = Math.floor((total % 60000) / 1000);
+      setT({ days, hours, minutes, seconds, total });
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
     return () => clearInterval(interval);
-  }, [target]);
+  }, [targetISO]);
+
+  // Placeholder au SSR pour éviter hydration mismatch
+  if (!mounted) {
+    return (
+      <div className="flex items-center justify-center gap-2 sm:gap-5">
+        <Cell label="Days" value={0} />
+        <span className="text-vc-pink text-3xl sm:text-5xl font-bold">:</span>
+        <Cell label="Hours" value={0} />
+        <span className="text-vc-pink text-3xl sm:text-5xl font-bold">:</span>
+        <Cell label="Minutes" value={0} />
+        <span className="text-vc-pink text-3xl sm:text-5xl font-bold">:</span>
+        <Cell label="Seconds" value={0} />
+      </div>
+    );
+  }
 
   if (t.total === 0) {
     return (
