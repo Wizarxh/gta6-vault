@@ -25,8 +25,52 @@ export default function HomePage() {
   const breaking = getBreakingArticles();
   const featured = getAllArticles()[0];
 
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "NewsMediaOrganization",
+    "name": "GTA6 Vault",
+    "url": "https://gta6-vault.com",
+    "logo": "https://gta6-vault.com/favicon.ico",
+    "description": "Premium GTA 6 newsroom — verified, curated, daily.",
+    "sameAs": [
+      "https://twitter.com/gta6vault",
+      "https://www.tiktok.com/@gta6.vault"
+    ]
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "When does GTA 6 release?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "November 19, 2026"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I know if news is verified?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We tag every article: VERIFIED (sourced and corroborated by at least two independent channels), RUMOR (credible enough to publish, not confirmed), or DEBUNKED (proven false on record with receipts)."
+        }
+      }
+    ]
+  };
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <BreakingTicker items={breaking} />
 
       <section className="relative isolate overflow-hidden scanline">
