@@ -1,4 +1,3 @@
-'use client'
 import Link from "next/link";
 import Countdown from "@/components/Countdown";
 import ArticleCard from "@/components/ArticleCard";
