@@ -151,7 +151,7 @@ export default async function ArticlePage({ params }) {
           </ul>
           <p className="mt-4 text-xs text-vc-muted">
             We re-check this verdict whenever new evidence surfaces. If you
-            have a tip, write to tips@gta6vault.example.
+            have a tip, write to tips@{SITE.url.replace("https://", "")}.
           </p>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { getAllArticles, getArticleBySlug } from "@/lib/articles";
+import { SITE } from "@/lib/site";
 
 export const alt = "GTA6 Vault article";
 export const size = { width: 1200, height: 630 };
@@ -160,7 +161,7 @@ export default async function Image({ params }) {
           <div style={{ display: "flex" }}>
             {article?.author ?? "GTA6 Vault editorial"}
           </div>
-          <div style={{ display: "flex" }}>gta6vault.example.com</div>
+          <div style={{ display: "flex" }}>{SITE.url.replace("https://", "")}</div>
         </div>
       </div>
     ),

@@ -110,7 +110,7 @@ export default async function OG() {
           }}
         >
           <div>Launch &middot; 19 Nov 2026</div>
-          <div>gta6vault.example.com</div>
+          <div>{SITE.url.replace("https://", "")}</div>
         </div>
       </div>
     ),
