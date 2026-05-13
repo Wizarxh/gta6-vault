@@ -53,7 +53,7 @@ ${content}
     const url = `${process.env.NEXT_PUBLIC_SITE_URL || "https://gta6-vault.com"}/news/${slug}`;
 
     return NextResponse.json(
-      { slug, url },
+      { slug, url, published: true },
       { status: 201 }
     );
   } catch (error) {
