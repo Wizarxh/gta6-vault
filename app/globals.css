@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
 
 :root {
   --vc-bg: #0a0a0a;
@@ -9,7 +10,8 @@
   --vc-yellow: #ffd23f;
   --vc-text: #f5f3ff;
   --vc-muted: #9aa0b4;
-  --vc-border: rgba(255, 107, 157, 0.18);
+  --vc-border: rgba(255, 107, 157, 0.12);
+  --vc-accent: rgba(255, 107, 157, 0.08);
 }
 
 @theme inline {
@@ -22,6 +24,7 @@
   --color-vc-muted: var(--vc-muted);
   --color-vc-border: var(--vc-border);
   --font-sans: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: Merriweather, Georgia, serif;
   --font-mono: var(--font-mono), ui-monospace, monospace;
   --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
 }
@@ -67,24 +70,15 @@ body {
 }
 
 .neon-text {
-  text-shadow:
-    0 0 1px rgba(255, 107, 157, 0.6),
-    0 0 16px rgba(255, 107, 157, 0.45),
-    0 0 32px rgba(0, 212, 255, 0.25);
+  text-shadow: none;
 }
 
 .neon-border {
-  box-shadow:
-    0 0 0 1px rgba(255, 107, 157, 0.35),
-    0 0 24px rgba(255, 107, 157, 0.18),
-    0 0 48px rgba(0, 212, 255, 0.12);
+  box-shadow: none;
 }
 
 .chrome-text {
-  background: linear-gradient(180deg, #ff6b9d 0%, #ffd23f 45%, #00d4ff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--vc-text);
 }
 
 .scanline::after {
@@ -127,4 +121,43 @@ body {
 
 .vc-marquee {
   animation: vc-marquee 45s linear infinite;
+}
+
+/* Article typography for premium news feel */
+.article-content {
+  font-family: var(--font-serif);
+  line-height: 1.8;
+  letter-spacing: 0.3px;
+}
+
+.article-content h1 {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.article-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  line-height: 1.3;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.article-content p {
+  margin-bottom: 1.5rem;
+  color: var(--vc-text);
+}
+
+.article-content a {
+  color: var(--vc-cyan);
+  text-decoration: underline;
+}
+
+.article-content a:hover {
+  opacity: 0.8;
 }
