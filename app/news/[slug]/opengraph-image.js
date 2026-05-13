@@ -15,6 +15,12 @@ const STATUS_COLOR = {
   DEBUNKED: "#FF6B9D",
 };
 
+const STATUS_GRADIENT = {
+  VERIFIED: "linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%)",
+  RUMOR: "linear-gradient(135deg, #0a0a0a 0%, #2d2d1a 100%)",
+  DEBUNKED: "linear-gradient(135deg, #0a0a0a 0%, #2d1a1a 100%)",
+};
+
 export default async function Image({ params }) {
   const { slug } = await params;
   const article = getArticleBySlug(slug);
@@ -22,6 +28,7 @@ export default async function Image({ params }) {
   const status = article?.status ?? "VERIFIED";
   const category = article?.category ?? "Dispatch";
   const accent = STATUS_COLOR[status] ?? "#FF6B9D";
+  const bgGradient = STATUS_GRADIENT[status] ?? "linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%)";
 
   return new ImageResponse(
     (
@@ -33,9 +40,7 @@ export default async function Image({ params }) {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 64,
-          background:
-            article?.hero ??
-            "linear-gradient(135deg, #FF6B9D 0%, #00D4FF 100%)",
+          background: bgGradient,
           color: "#fff",
           fontFamily: "system-ui, sans-serif",
           position: "relative",
@@ -56,6 +61,7 @@ export default async function Image({ params }) {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
+            zIndex: 10,
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
@@ -98,51 +104,35 @@ export default async function Image({ params }) {
                 background: "rgba(0,0,0,0.45)",
                 borderRadius: 999,
                 fontSize: 16,
-                fontWeight: 700,
-                letterSpacing: 4,
-                textTransform: "uppercase",
-                display: "flex",
+                fontWeight: 600,
               }}
             >
               {status}
             </div>
-            <div
-              style={{
-                padding: "8px 16px",
-                border: "2px solid rgba(255,255,255,0.45)",
-                color: "#fff",
-                background: "rgba(0,0,0,0.45)",
-                borderRadius: 999,
-                fontSize: 16,
-                fontWeight: 600,
-                letterSpacing: 4,
-                textTransform: "uppercase",
-                display: "flex",
-              }}
-            >
-              {category}
-            </div>
           </div>
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            maxWidth: 1000,
-          }}
-        >
-          <div
+        <div style={{ zIndex: 10 }}>
+          <h1
             style={{
-              fontSize: title.length > 60 ? 56 : 72,
+              fontSize: 56,
               fontWeight: 900,
-              lineHeight: 1.05,
-              letterSpacing: -1,
-              display: "flex",
-              textShadow: "0 4px 24px rgba(0,0,0,0.45)",
+              lineHeight: 1.1,
+              marginBottom: 24,
+              maxWidth: "90%",
             }}
           >
             {title}
+          </h1>
+          <div
+            style={{
+              display: "flex",
+              gap: 20,
+              fontSize: 18,
+              color: "rgba(255,255,255,0.8)",
+            }}
+          >
+            <span>{category}</span>
           </div>
         </div>
 
@@ -151,19 +141,16 @@ export default async function Image({ params }) {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            fontSize: 18,
-            color: "rgba(255,255,255,0.85)",
-            letterSpacing: 4,
-            textTransform: "uppercase",
+            fontSize: 14,
+            color: "rgba(255,255,255,0.6)",
+            zIndex: 10,
           }}
         >
-          <div style={{ display: "flex" }}>
-            {article?.author ?? "GTA6 Vault editorial"}
-          </div>
-          <div style={{ display: "flex" }}>gta6vault.example.com</div>
+          <span>GTA6 Vault • Verified. Curated. Daily.</span>
+          <span>gta6vault.com</span>
         </div>
       </div>
     ),
-    size,
+    { ...size }
   );
 }
