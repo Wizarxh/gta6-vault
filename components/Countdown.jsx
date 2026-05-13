@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useSyncExternalStore, useEffect, useState } from "react";
 
 function diff(target) {
   const total = Math.max(0, target - Date.now());
@@ -32,11 +32,31 @@ function Cell({ label, value }) {
 
 export default function Countdown({ targetISO }) {
   const target = new Date(targetISO).getTime();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const t = useSyncExternalStore(
     subscribe,
     () => diff(target),
     () => ({ days: 0, hours: 0, minutes: 0, seconds: 0, total: 1 }),
   );
+
+  if (!mounted) {
+    return (
+      <div className="flex items-center justify-center gap-2 sm:gap-5">
+        <Cell label="Days" value={0} />
+        <span className="text-vc-pink text-3xl sm:text-5xl font-bold">:</span>
+        <Cell label="Hours" value={0} />
+        <span className="text-vc-pink text-3xl sm:text-5xl font-bold">:</span>
+        <Cell label="Minutes" value={0} />
+        <span className="text-vc-pink text-3xl sm:text-5xl font-bold">:</span>
+        <Cell label="Seconds" value={0} />
+      </div>
+    );
+  }
 
   if (t.total === 0) {
     return (
