@@ -1,19 +1,15 @@
 "use client";
 
-import { useSyncExternalStore, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function diff(target) {
+  if (typeof window === "undefined") return { days: 0, hours: 0, minutes: 0, seconds: 0, total: 1 };
   const total = Math.max(0, target - Date.now());
   const days = Math.floor(total / 86400000);
   const hours = Math.floor((total % 86400000) / 3600000);
   const minutes = Math.floor((total % 3600000) / 60000);
   const seconds = Math.floor((total % 60000) / 1000);
   return { days, hours, minutes, seconds, total };
-}
-
-function subscribe(callback) {
-  const id = setInterval(callback, 1000);
-  return () => clearInterval(id);
 }
 
 function Cell({ label, value }) {
@@ -32,31 +28,15 @@ function Cell({ label, value }) {
 
 export default function Countdown({ targetISO }) {
   const target = new Date(targetISO).getTime();
-  const [mounted, setMounted] = useState(false);
+  const [t, setT] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, total: 1 });
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const t = useSyncExternalStore(
-    subscribe,
-    () => diff(target),
-    () => ({ days: 0, hours: 0, minutes: 0, seconds: 0, total: 1 }),
-  );
-
-  if (!mounted) {
-    return (
-      <div className="flex items-center justify-center gap-2 sm:gap-5">
-        <Cell label="Days" value={0} />
-        <span className="text-vc-pink text-3xl sm:text-5xl font-bold">:</span>
-        <Cell label="Hours" value={0} />
-        <span className="text-vc-pink text-3xl sm:text-5xl font-bold">:</span>
-        <Cell label="Minutes" value={0} />
-        <span className="text-vc-pink text-3xl sm:text-5xl font-bold">:</span>
-        <Cell label="Seconds" value={0} />
-      </div>
-    );
-  }
+    setT(diff(target));
+    const interval = setInterval(() => {
+      setT(diff(target));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [target]);
 
   if (t.total === 0) {
     return (
