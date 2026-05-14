@@ -27,7 +27,7 @@ TikTok audience, helping spread reliable information across the platform.
 ---
 
 ## 2. TERMS OF SERVICE
-**URL:** `https://gta6-vault.com/tos`
+**URL:** `https://gta6-vault.com/tos.html`
 **File:** `public/tos.html` (included in repo)
 
 Key sections:
@@ -42,7 +42,7 @@ Key sections:
 ---
 
 ## 3. PRIVACY POLICY
-**URL:** `https://gta6-vault.com/privacy`
+**URL:** `https://gta6-vault.com/privacy.html`
 **File:** `public/privacy.html` (included in repo)
 
 Key sections:
@@ -155,8 +155,8 @@ sourcing and attribution for every shared article."
 **Website:** https://gta6-vault.com  
 **Contact Email:** tips@gta6-vault.com  
 **Support Page:** https://gta6-vault.com/about  
-**Terms:** https://gta6-vault.com/tos  
-**Privacy:** https://gta6-vault.com/privacy  
+**Terms:** https://gta6-vault.com/tos.html  
+**Privacy:** https://gta6-vault.com/privacy.html  
 
 ---
 
