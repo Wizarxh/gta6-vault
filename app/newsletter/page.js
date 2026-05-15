@@ -12,28 +12,9 @@ export const metadata = {
 };
 
 export default function NewsletterPage() {
-  const newsletterSchema = {
-    "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    "headline": "GTA6 Vault Daily Brief Newsletter",
-    "description": "Subscribe to curated GTA6 news and updates",
-    "publisher": {
-      "@type": "Organization",
-      "name": "GTA6 Vault",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://gta6-vault.com/favicon.ico"
-      }
-    }
-  };
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(newsletterSchema) }}
-      />
-      <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
         <div className="text-center">
           <div className="font-mono text-xs uppercase tracking-[0.3em] text-vc-cyan">
             Stay Updated
@@ -91,6 +72,6 @@ export default function NewsletterPage() {
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 }
