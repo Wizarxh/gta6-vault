@@ -7,7 +7,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="mt-24 border-t border-vc-border bg-black/40">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-5">
         <div>
           {/* Logo + Brand */}
           <div className="flex items-center gap-3 mb-4">
@@ -96,22 +96,69 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="https://twitter.com/gta6vault"
+                href={SITE.twitterUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-vc-muted hover:text-vc-cyan transition-colors"
               >
-                𝕏 @gta6vault
+                𝕏 Twitter
               </a>
             </li>
             <li>
               <a
-                href="https://discord.gg/gta6vault"
+                href={SITE.discord}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-vc-muted hover:text-vc-cyan transition-colors"
               >
-                🎮 Discord Server
+                🎮 Discord
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div className="font-mono text-xs uppercase tracking-[0.3em] text-vc-muted">
+            Follow
+          </div>
+          <ul className="mt-4 space-y-3 text-sm">
+            <li>
+              <a
+                href={SITE.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vc-muted hover:text-vc-cyan transition-colors"
+              >
+                📺 YouTube
+              </a>
+            </li>
+            <li>
+              <a
+                href={SITE.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vc-muted hover:text-vc-cyan transition-colors"
+              >
+                📷 Instagram
+              </a>
+            </li>
+            <li>
+              <a
+                href={SITE.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vc-muted hover:text-vc-cyan transition-colors"
+              >
+                f Facebook
+              </a>
+            </li>
+            <li>
+              <a
+                href={SITE.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vc-muted hover:text-vc-cyan transition-colors"
+              >
+                in LinkedIn
               </a>
             </li>
           </ul>

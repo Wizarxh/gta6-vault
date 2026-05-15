@@ -39,6 +39,7 @@ export default function VideoBackground() {
         playsInline
         preload="auto"
         className="absolute inset-0 w-full h-full object-cover z-10"
+        style={{ objectPosition: "center bottom" }}
       >
         {/* Primary: Modern codec with fallbacks */}
         <source src="/videos/hero.mp4" type="video/mp4; codecs='hvc1'" />

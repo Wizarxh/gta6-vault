@@ -25,8 +25,8 @@ const mono = JetBrains_Mono({
 export const metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.name} — ${SITE.tagline}`,
-    template: `%s — ${SITE.name}`,
+    default: `${SITE.name} | GTA 6 News & Rumors Hub`,
+    template: `%s | ${SITE.name}`,
   },
   description: SITE.description,
   applicationName: SITE.name,
@@ -44,14 +44,22 @@ export const metadata = {
     "GTA 6 trailer",
   ],
   authors: [{ name: `${SITE.name} editorial` }],
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/",
+      "fr": "/fr",
+      "x-default": "/",
+    },
+  },
   openGraph: {
     type: "website",
     siteName: SITE.name,
-    title: `${SITE.name} — ${SITE.tagline}`,
+    title: `${SITE.name} | GTA 6 News & Rumors`,
     description: SITE.description,
     url: SITE.url,
     locale: SITE.locale,
+    alternateLocale: ["fr_FR"],
     images: [
       {
         url: "/logo-lg.png",
