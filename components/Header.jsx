@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { SITE } from "@/lib/site";
 
 const NAV_LINKS = [
@@ -14,12 +15,58 @@ export default function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
         {/* Logo + Brand Name */}
         <Link href="/" className="flex items-center gap-3 group">
-          {/* Logo */}
+          {/* Logo SVG */}
           <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 group-hover:opacity-80 transition-opacity">
-            <div className="absolute inset-0 bg-gradient-to-br from-vc-pink/20 to-vc-cyan/20 rounded-lg blur-lg group-hover:blur-xl transition-all" />
-            <div className="relative w-full h-full bg-gradient-to-br from-vc-pink to-vc-cyan rounded-lg flex items-center justify-center font-display font-black text-white text-lg sm:text-xl">
-              V
-            </div>
+            <svg
+              viewBox="0 0 512 512"
+              className="w-full h-full"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <style>
+                  {`
+                    @keyframes glow {
+                      0%, 100% {
+                        filter: drop-shadow(0 0 4px rgba(255, 107, 157, 0.6)) drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+                      }
+                      50% {
+                        filter: drop-shadow(0 0 8px rgba(255, 107, 157, 0.8)) drop-shadow(0 0 16px rgba(0, 212, 255, 0.6));
+                      }
+                    }
+                    .logo-mark {
+                      animation: glow 3s ease-in-out infinite;
+                    }
+                  `}
+                </style>
+                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style={{ stopColor: "#ff6b9d", stopOpacity: 1 }} />
+                  <stop offset="100%" style={{ stopColor: "#00d4ff", stopOpacity: 1 }} />
+                </linearGradient>
+              </defs>
+
+              <rect width="512" height="512" fill="#0a0a0a" />
+
+              <g className="logo-mark" transform="translate(256, 256)">
+                <path
+                  d="M -80 -100 L 0 80 L 0 0 Z"
+                  fill="none"
+                  stroke="url(#logoGradient)"
+                  strokeWidth="24"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M 80 -100 L 0 80 L 0 0 Z"
+                  fill="none"
+                  stroke="url(#logoGradient)"
+                  strokeWidth="24"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <circle cx="0" cy="40" r="12" fill="#ff6b9d" opacity="0.8" />
+                <circle cx="0" cy="40" r="8" fill="#00d4ff" opacity="0.6" />
+              </g>
+            </svg>
           </div>
 
           {/* Brand Name */}

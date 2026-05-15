@@ -1,0 +1,53 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @keyframes glow {
+        0%, 100% {
+          filter: drop-shadow(0 0 4px rgba(255, 107, 157, 0.6)) drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+        }
+        50% {
+          filter: drop-shadow(0 0 8px rgba(255, 107, 157, 0.8)) drop-shadow(0 0 16px rgba(0, 212, 255, 0.6));
+        }
+      }
+
+      .logo-mark {
+        animation: glow 3s ease-in-out infinite;
+      }
+    </style>
+
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b9d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" fill="#0a0a0a"/>
+
+  <!-- Logo Mark: Geometric V -->
+  <g class="logo-mark" transform="translate(256, 256)">
+    <!-- Left stroke of V -->
+    <path
+      d="M -80 -100 L 0 80 L 0 0 Z"
+      fill="none"
+      stroke="url(#logoGradient)"
+      stroke-width="24"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- Right stroke of V -->
+    <path
+      d="M 80 -100 L 0 80 L 0 0 Z"
+      fill="none"
+      stroke="url(#logoGradient)"
+      stroke-width="24"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- Center glow accent -->
+    <circle cx="0" cy="40" r="12" fill="#ff6b9d" opacity="0.8"/>
+    <circle cx="0" cy="40" r="8" fill="#00d4ff" opacity="0.6"/>
+  </g>
+</svg>
