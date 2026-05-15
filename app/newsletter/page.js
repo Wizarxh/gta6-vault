@@ -1,4 +1,5 @@
 import { SITE } from "@/lib/site";
+import NewsletterForm from "@/components/NewsletterForm";
 
 export const metadata = {
   title: "Newsletter — GTA6 Vault",
@@ -39,24 +40,18 @@ export default function NewsletterPage() {
         </div>
       </div>
 
+      {/* SIGNUP FORM */}
       <div className="mt-12">
         <h2 className="mb-8 text-center text-2xl font-bold text-white">Join Our Community</h2>
-
-        <div className="rounded-lg border border-vc-cyan/30 bg-black/50 p-8">
-          <div id="beehiiv-embed-container">
-            <p className="text-center text-vc-muted">
-              Loading signup form...
-            </p>
-          </div>
-        </div>
+        <NewsletterForm />
 
         <p className="mt-6 text-center text-sm text-vc-muted">
           We respect your privacy. Unsubscribe at any time.{" "}
-          <a href="/privacy" className="text-vc-cyan hover:underline">
+          <a href="#" className="text-vc-cyan hover:underline">
             Privacy Policy
           </a>
           {" "}·{" "}
-          <a href="/tos" className="text-vc-cyan hover:underline">
+          <a href="#" className="text-vc-cyan hover:underline">
             Terms of Service
           </a>
         </p>

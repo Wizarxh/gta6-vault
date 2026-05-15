@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Primary Pages -->
+  <url>
+    <loc>https://gta6-vault.com/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gta6-vault.com/news</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://gta6-vault.com/about</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://gta6-vault.com/newsletter</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Articles -->
+  <url>
+    <loc>https://gta6-vault.com/news/trailer-2-breakdown-vice-city-skyline</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://gta6-vault.com/news/release-date-stays-november-19-2026</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://gta6-vault.com/news/online-mode-character-transfer-leak</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://gta6-vault.com/news/map-size-claim-debunked-six-times-gta5</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://gta6-vault.com/news/two-protagonist-system-deep-dive</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- French versions -->
+  <url>
+    <loc>https://gta6-vault.com/fr/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://gta6-vault.com/fr/news</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

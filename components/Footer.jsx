@@ -7,7 +7,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="mt-24 border-t border-vc-border bg-black/40">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-4">
         <div>
           {/* Logo + Brand */}
           <div className="flex items-center gap-3 mb-4">
@@ -78,6 +78,41 @@ export default function Footer() {
             <li>
               <span className="text-vc-pink">DEBUNKED</span> — proven false on
               record
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div className="font-mono text-xs uppercase tracking-[0.3em] text-vc-muted">
+            Contact
+          </div>
+          <ul className="mt-4 space-y-3 text-sm">
+            <li>
+              <a
+                href={`mailto:${SITE.email}`}
+                className="text-vc-muted hover:text-vc-cyan transition-colors"
+              >
+                📧 {SITE.email}
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://twitter.com/gta6vault"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vc-muted hover:text-vc-cyan transition-colors"
+              >
+                𝕏 @gta6vault
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://discord.gg/gta6vault"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vc-muted hover:text-vc-cyan transition-colors"
+              >
+                🎮 Discord Server
+              </a>
             </li>
           </ul>
         </div>

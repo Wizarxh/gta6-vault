@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import VideoBackground from "@/components/VideoBackground";
+import SchemaMarkup from "@/components/SchemaMarkup";
 import { SITE } from "@/lib/site";
 
 const display = Orbitron({
@@ -87,7 +88,11 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${display.variable} ${body.variable} ${mono.variable} h-full antialiased`}
     >
+      <head>
+        <SchemaMarkup />
+      </head>
       <body className="min-h-full flex flex-col relative z-10">
+        <SchemaMarkup />
         <VideoBackground />
         <Header />
         <main className="flex-1 relative z-30">{children}</main>
