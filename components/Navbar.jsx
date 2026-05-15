@@ -5,6 +5,7 @@ const LINKS = [
   { href: "/", label: "Home" },
   { href: "/news", label: "News" },
   { href: "/about", label: "About" },
+  { href: "/newsletter", label: "Newsletter" },
 ];
 
 export default function Navbar() {

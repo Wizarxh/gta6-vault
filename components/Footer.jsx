@@ -36,6 +36,11 @@ export default function Footer() {
                 About the Vault
               </Link>
             </li>
+            <li>
+              <Link href="/newsletter" className="hover:text-vc-cyan">
+                Newsletter
+              </Link>
+            </li>
           </ul>
         </div>
         <div>
