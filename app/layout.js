@@ -73,10 +73,10 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${display.variable} ${body.variable} ${mono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col relative z-10">
         <VideoBackground />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 relative z-30">{children}</main>
         <Footer />
       </body>
     </html>

@@ -3,10 +3,10 @@ import Countdown from "@/components/Countdown";
 import ArticleCard from "@/components/ArticleCard";
 import BreakingTicker from "@/components/BreakingTicker";
 import {
-  getAllArticles,
-  getBreakingArticles,
-  getRecentArticles,
-} from "@/lib/articles";
+  getAllArticlesFr,
+  getBreakingArticlesFr,
+  getRecentArticlesFr,
+} from "@/lib/articles-fr";
 import { SITE } from "@/lib/site";
 
 export const metadata = {
@@ -21,9 +21,9 @@ export const metadata = {
 };
 
 export default function FrenchHomePage() {
-  const recent = getRecentArticles(4);
-  const breaking = getBreakingArticles();
-  const featured = getAllArticles()[0];
+  const recent = getRecentArticlesFr(4);
+  const breaking = getBreakingArticlesFr();
+  const featured = getAllArticlesFr()[0];
 
   return (
     <div>
@@ -40,9 +40,9 @@ export default function FrenchHomePage() {
               <span className="size-1.5 rounded-full bg-vc-cyan vc-pulse" />
               Newsroom GTA 6 Premium
             </span>
-            <h1 className="mt-6 font-display text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl">
-              <span className="block chrome-text">Bienvenue</span>
-              <span className="block chrome-text">à Vice City.</span>
+            <h1 className="mt-6 font-display text-5xl font-black uppercase leading-[0.95] tracking-tight sm:text-7xl md:text-8xl">
+              <span className="block chrome-text neon-text">Bienvenue</span>
+              <span className="block chrome-text neon-text">à Vice City.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-base text-vc-muted sm:text-lg">
               Vérifié. Curé. Au quotidien.{" "}

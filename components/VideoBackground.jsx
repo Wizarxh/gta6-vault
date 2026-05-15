@@ -30,7 +30,7 @@ export default function VideoBackground() {
   }
 
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden">
+    <div className="fixed inset-0 z-0 overflow-hidden">
       {/* Hero Video Background - 10s loop */}
       <video
         autoPlay
@@ -38,7 +38,7 @@ export default function VideoBackground() {
         loop
         playsInline
         preload="auto"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover z-10"
       >
         {/* Primary: Modern codec with fallbacks */}
         <source src="/videos/hero.mp4" type="video/mp4; codecs='hvc1'" />
@@ -49,11 +49,11 @@ export default function VideoBackground() {
       </video>
 
       {/* Dark Overlay - Premium look + text readability */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+      <div className="absolute inset-0 z-20 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
 
       {/* Alternate overlay: Radial gradient for cinematic effect */}
       <div
-        className="absolute inset-0 -z-10 pointer-events-none"
+        className="absolute inset-0 z-20 pointer-events-none"
         style={{
           background:
             "radial-gradient(ellipse at center bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8))",
@@ -62,7 +62,7 @@ export default function VideoBackground() {
 
       {/* Scan lines effect - Vice City aesthetic */}
       <div
-        className="absolute inset-0 -z-10 pointer-events-none mix-blend-overlay"
+        className="absolute inset-0 z-20 pointer-events-none mix-blend-overlay"
         style={{
           backgroundImage:
             "repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0px, rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 3px)",
@@ -73,7 +73,7 @@ export default function VideoBackground() {
 
       {/* Subtle grid - Neon cyan accent */}
       <div
-        className="absolute inset-0 -z-10 pointer-events-none opacity-[0.03]"
+        className="absolute inset-0 z-20 pointer-events-none opacity-[0.03]"
         style={{
           backgroundImage:
             "linear-gradient(0deg, rgba(0, 212, 255, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 212, 255, 0.5) 1px, transparent 1px)",
@@ -83,7 +83,7 @@ export default function VideoBackground() {
 
       {/* Edge glow effect - adds premium polish */}
       <div
-        className="absolute inset-0 -z-10 pointer-events-none"
+        className="absolute inset-0 z-20 pointer-events-none"
         style={{
           boxShadow: "inset 0 0 120px rgba(0, 212, 255, 0.1)",
         }}
