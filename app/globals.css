@@ -1,15 +1,23 @@
 @import "tailwindcss";
 
+/* COLOR PALETTE - Vice City Aesthetic */
 :root {
-  --vc-bg: #0a0a0a;
-  --vc-bg-elev: #131018;
-  --vc-pink: #ff6b9d;
-  --vc-cyan: #00d4ff;
-  --vc-purple: #7b2cbf;
-  --vc-yellow: #ffd23f;
-  --vc-text: #f5f3ff;
-  --vc-muted: #9aa0b4;
-  --vc-border: rgba(255, 107, 157, 0.18);
+  /* Primary Colors */
+  --vc-pink: #ff6b9d;      /* Neon Pink - Primary CTA */
+  --vc-cyan: #00d4ff;      /* Cyan - Secondary accent */
+
+  /* Secondary Colors */
+  --vc-purple: #7b2cbf;    /* Medium Purple - Depth */
+  --vc-purple-dark: #2e1a47; /* Deep Purple - Premium feel */
+  --vc-yellow: #ffd23f;    /* Neon Yellow - Alerts, RUMOR tag */
+  --vc-green: #10b981;     /* Emerald - VERIFIED tag, success */
+
+  /* Neutral Colors */
+  --vc-bg: #0a0a0a;        /* Primary background */
+  --vc-bg-elev: #131018;   /* Elevated surfaces */
+  --vc-text: #f5f3ff;      /* Primary text */
+  --vc-muted: #9aa0b4;     /* Muted text, captions */
+  --vc-border: rgba(255, 107, 157, 0.18); /* Pink border */
 }
 
 @theme inline {
@@ -18,12 +26,16 @@
   --color-vc-pink: var(--vc-pink);
   --color-vc-cyan: var(--vc-cyan);
   --color-vc-purple: var(--vc-purple);
+  --color-vc-purple-dark: var(--vc-purple-dark);
   --color-vc-yellow: var(--vc-yellow);
+  --color-vc-green: var(--vc-green);
   --color-vc-muted: var(--vc-muted);
   --color-vc-border: var(--vc-border);
-  --font-sans: var(--font-display), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-mono), ui-monospace, monospace;
+
+  /* Typography - Vice City Brand */
   --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
 }
 
 html,
