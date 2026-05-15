@@ -115,6 +115,30 @@ export default function AboutPage() {
         </ol>
       </section>
 
+      <section className="mt-14">
+        <h2 className="font-display text-xl font-bold uppercase tracking-[0.2em]">
+          <span className="text-vc-cyan">{"//"}</span> Join the community
+        </h2>
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <Link
+            href="/newsletter"
+            className="flex flex-col rounded-lg border border-vc-cyan/30 bg-black/40 p-4 hover:bg-black/60 transition-colors"
+          >
+            <span className="font-mono text-xs uppercase tracking-[0.3em] text-vc-cyan">Newsletter</span>
+            <span className="mt-2 text-sm text-vc-muted">Daily digest delivered to your inbox at 9 AM</span>
+          </Link>
+          <a
+            href="https://discord.gg/FGkBeR3hf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col rounded-lg border border-vc-pink/30 bg-black/40 p-4 hover:bg-black/60 transition-colors"
+          >
+            <span className="font-mono text-xs uppercase tracking-[0.3em] text-vc-pink">Discord</span>
+            <span className="mt-2 text-sm text-vc-muted">Real-time updates and discussion with GTA6 fans</span>
+          </a>
+        </div>
+      </section>
+
       <section className="mt-14 rounded-2xl border border-vc-border bg-black/40 p-6 sm:p-8">
         <h2 className="font-display text-xl font-bold uppercase tracking-[0.2em]">
           <span className="text-vc-yellow">{"//"}</span> Not affiliated
