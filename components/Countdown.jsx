@@ -30,7 +30,9 @@ function Cell({ label, value }) {
   );
 }
 
-export default function Countdown({ targetISO }) {
+import { useState, useEffect } from "react";
+
+function CountdownContent({ targetISO }) {
   const target = new Date(targetISO).getTime();
   const t = useSyncExternalStore(
     subscribe,
@@ -68,4 +70,65 @@ export default function Countdown({ targetISO }) {
       <Cell label="Seconds" value={t.seconds} />
     </div>
   );
+}
+
+export default function Countdown({ targetISO }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Don't render anything on server, only render after client mount
+  if (!mounted) {
+    return (
+      <div suppressHydrationWarning>
+        <div className="flex items-center justify-center gap-2 sm:gap-5">
+          <div className="flex flex-col items-center min-w-[68px] sm:min-w-[88px]">
+            <div className="font-mono text-3xl sm:text-5xl md:text-6xl font-bold chrome-text leading-none tabular-nums tracking-tight">
+              --
+            </div>
+            <div className="mt-2 text-[10px] sm:text-xs uppercase tracking-[0.3em] text-vc-muted">
+              Days
+            </div>
+          </div>
+          <span className="text-vc-pink text-3xl sm:text-5xl font-bold vc-pulse">
+            :
+          </span>
+          <div className="flex flex-col items-center min-w-[68px] sm:min-w-[88px]">
+            <div className="font-mono text-3xl sm:text-5xl md:text-6xl font-bold chrome-text leading-none tabular-nums tracking-tight">
+              --
+            </div>
+            <div className="mt-2 text-[10px] sm:text-xs uppercase tracking-[0.3em] text-vc-muted">
+              Hours
+            </div>
+          </div>
+          <span className="text-vc-pink text-3xl sm:text-5xl font-bold vc-pulse">
+            :
+          </span>
+          <div className="flex flex-col items-center min-w-[68px] sm:min-w-[88px]">
+            <div className="font-mono text-3xl sm:text-5xl md:text-6xl font-bold chrome-text leading-none tabular-nums tracking-tight">
+              --
+            </div>
+            <div className="mt-2 text-[10px] sm:text-xs uppercase tracking-[0.3em] text-vc-muted">
+              Minutes
+            </div>
+          </div>
+          <span className="text-vc-pink text-3xl sm:text-5xl font-bold vc-pulse">
+            :
+          </span>
+          <div className="flex flex-col items-center min-w-[68px] sm:min-w-[88px]">
+            <div className="font-mono text-3xl sm:text-5xl md:text-6xl font-bold chrome-text leading-none tabular-nums tracking-tight">
+              --
+            </div>
+            <div className="mt-2 text-[10px] sm:text-xs uppercase tracking-[0.3em] text-vc-muted">
+              Seconds
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return <CountdownContent targetISO={targetISO} />;
 }
