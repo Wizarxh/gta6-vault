@@ -1,225 +1,153 @@
-'use client';
+import Link from "next/link";
+import Countdown from "@/components/Countdown";
+import ArticleCard from "@/components/ArticleCard";
+import BreakingTicker from "@/components/BreakingTicker";
+import {
+  getAllArticles,
+  getBreakingArticles,
+  getRecentArticles,
+} from "@/lib/articles";
+import { SITE } from "@/lib/site";
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Navbar from '@/components/Navbar';
-import Countdown from '@/components/Countdown';
-import BreakingTicker from '@/components/BreakingTicker';
+export const metadata = {
+  title: `${SITE.name} — ${SITE.tagline}`,
+  description: SITE.description,
+  alternates: { canonical: "/fr" },
+  openGraph: {
+    title: `${SITE.name} — ${SITE.tagline}`,
+    description: SITE.description,
+    url: "/fr",
+  },
+};
 
-const FrenchHome = () => {
-  const [articles, setArticles] = useState([]);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    // Fetch French articles
-    const frenchArticles = [
-      {
-        id: 1,
-        title: 'Chronologie de développement GTA 6 — 12 ans pour créer Vice City 2026',
-        slug: 'chronologie-developpement-gta-6-2014-2026',
-        description: 'La chronologie complète des 12 ans de développement de GTA 6, de la greenlight 2014 au lancement novembre 2026.',
-        tag: 'VERIFIED',
-        date: '2026-05-15',
-        image: 'https://images.unsplash.com/photo-1600080869823-f30f7835481c?w=1200&h=630&fit=crop'
-      },
-      {
-        id: 2,
-        title: 'Vice City 1986 vs 2026 — La Transformation de Leonida',
-        slug: 'vice-city-1986-vs-2026-transformation',
-        description: 'Comparaison district par district. Comment Vice City a changé en 40 ans (1986 → 2026).',
-        tag: 'VERIFIED',
-        date: '2026-05-15',
-        image: 'https://images.unsplash.com/photo-1579546927361-f2499b0acc70?w=1200&h=630&fit=crop'
-      },
-      {
-        id: 3,
-        title: 'Mécaniques de Gameplay Leakées — Physique, Conduite & Combat',
-        slug: 'gta-6-mecaniques-gameplay-physique-conduite-combat',
-        description: 'Analyse des systèmes leakés (2022). Destruction, physique véhicules, combat. Ce qu\'on sait.',
-        tag: 'RUMOR',
-        date: '2026-05-15',
-        image: 'https://images.unsplash.com/photo-1614613535308-eb5fbd8a2c17?w=1200&h=630&fit=crop'
-      },
-      {
-        id: 4,
-        title: 'Migration GTA Online: Votre Progression Transfère-t-elle?',
-        slug: 'gta-6-migration-gta-online-progression',
-        description: 'Transfer de compte, richesse, progression. Ce qu\'on sait sur GTA 6 Online.',
-        tag: 'VERIFIED',
-        date: '2026-05-15',
-        image: 'https://images.unsplash.com/photo-1623977306292-28cdfffe76ca?w=1200&h=630&fit=crop'
-      },
-      {
-        id: 5,
-        title: 'Casting Voix Rumeurs: Lucia & Jason (Avant Reveal Officiel)',
-        slug: 'gta-6-casting-voix-speculation-lucia-jason',
-        description: 'Spéculations casting basées sur leaks, interviews, indices industrie. Qui voice Lucia & Jason?',
-        tag: 'RUMOR',
-        date: '2026-05-15',
-        image: 'https://images.unsplash.com/photo-1526374965328-7f5ae4e8b08f?w=1200&h=630&fit=crop'
-      },
-      {
-        id: 6,
-        title: 'PC vs Console: Analyse Technique GTA 6',
-        slug: 'gta-6-pc-vs-console-performance-attentes',
-        description: 'Targets graphiques, FPS, résolution. Performance PS5, Xbox Series X, PC (quand launch).',
-        tag: 'VERIFIED',
-        date: '2026-05-15',
-        image: 'https://images.unsplash.com/photo-1559163499-642a73c48e3d?w=1200&h=630&fit=crop'
-      }
-    ];
-    setArticles(frenchArticles);
-  }, []);
-
-  if (!mounted) return null;
+export default function FrenchHomePage() {
+  const recent = getRecentArticles(4);
+  const breaking = getBreakingArticles();
+  const featured = getAllArticles()[0];
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Navigation - Using shared Navbar component */}
-      <Navbar />
+    <div>
+      <BreakingTicker items={breaking} />
 
-      {/* Countdown */}
-      {mounted && <Countdown />}
+      <section className="relative isolate overflow-hidden scanline">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-72 outrun-grid"
+        />
+        <div className="mx-auto max-w-6xl px-4 pt-16 pb-20 sm:px-6 sm:pt-20 sm:pb-28 md:pt-28">
+          <div className="flex flex-col items-center text-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-vc-cyan/40 bg-vc-cyan/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.3em] text-vc-cyan">
+              <span className="size-1.5 rounded-full bg-vc-cyan vc-pulse" />
+              Newsroom GTA 6 Premium
+            </span>
+            <h1 className="mt-6 font-display text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl">
+              <span className="block chrome-text">Bienvenue</span>
+              <span className="block chrome-text">à Vice City.</span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-base text-vc-muted sm:text-lg">
+              Vérifié. Curé. Au quotidien.{" "}
+              Chaque fuite, chaque image de bande-annonce et chaque rumeur —
+              étiquetés{" "}
+              <span className="text-emerald-300">Vérifié</span>,{" "}
+              <span className="text-vc-yellow">Rumeur</span>, ou{" "}
+              <span className="text-vc-pink">Réfuté</span> pour que vous sachiez
+              toujours ce qui est réel.
+            </p>
 
-      {/* Breaking Ticker */}
-      <BreakingTicker />
+            <div className="mt-10 w-full">
+              <div className="mx-auto inline-block rounded-2xl border border-vc-border bg-black/60 px-4 py-5 sm:px-8 sm:py-7 neon-border">
+                <div className="mb-3 text-center font-mono text-[10px] uppercase tracking-[0.4em] text-vc-muted">
+                  Lancement — 19 novembre 2026
+                </div>
+                <Countdown targetISO={SITE.releaseDate} />
+              </div>
+            </div>
 
-      {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-6 py-16 text-center">
-        <h1 className="text-5xl font-black text-cyan-400 mb-4">
-          GTA 6 VAULT 🔓
-        </h1>
-        <p className="text-xl text-gray-300 mb-2">
-          Tous les news, analyses, et leaks de GTA 6 en un seul endroit
-        </p>
-        <p className="text-gray-400">
-          ⏰ Lancement: 19 novembre 2026 | 📍 Vice City (Leonida) | 🎮 PS5 / Xbox Series X
-        </p>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+              <Link
+                href="/fr/news"
+                className="inline-flex h-11 items-center justify-center rounded-full bg-vc-pink px-6 font-mono text-xs font-bold uppercase tracking-[0.25em] text-black transition-transform hover:-translate-y-0.5"
+              >
+                Lire les actualités
+              </Link>
+              <Link
+                href="/fr/about"
+                className="inline-flex h-11 items-center justify-center rounded-full border border-vc-cyan/60 bg-transparent px-6 font-mono text-xs font-bold uppercase tracking-[0.25em] text-vc-cyan transition-colors hover:bg-vc-cyan/10"
+              >
+                À propos
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Articles Grid */}
-      <section className="max-w-7xl mx-auto px-6 py-12">
-        <h2 className="text-3xl font-black text-cyan-400 mb-8">
-          📰 ARTICLES PILIERS
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {articles.map((article) => (
-            <Link href={`/fr/articles/${article.slug}`} key={article.id}>
-              <div className="bg-gray-900/50 border border-cyan-500/30 hover:border-cyan-500 transition overflow-hidden rounded-lg cursor-pointer h-full">
-                <div className="relative h-40 bg-gray-800 overflow-hidden">
-                  <img
-                    src={article.image}
-                    alt={article.title}
-                    className="w-full h-full object-cover hover:scale-105 transition"
-                  />
-                  <div className="absolute top-3 right-3 bg-cyan-600 text-black px-3 py-1 text-xs font-bold rounded">
-                    {article.tag}
-                  </div>
-                </div>
-                <div className="p-4">
-                  <h3 className="font-black text-cyan-400 mb-2 line-clamp-2">
-                    {article.title}
-                  </h3>
-                  <p className="text-sm text-gray-400 mb-4 line-clamp-2">
-                    {article.description}
-                  </p>
-                  <div className="text-xs text-gray-500">
-                    {new Date(article.date).toLocaleDateString('fr-FR')}
-                  </div>
-                </div>
-              </div>
+      {featured && (
+        <section className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mb-6 flex items-end justify-between">
+            <h2 className="font-display text-2xl font-bold uppercase tracking-[0.2em] text-vc-text sm:text-3xl">
+              <span className="text-vc-pink">{"//"}</span> Vedettes
+            </h2>
+            <Link
+              href="/fr/news"
+              className="font-mono text-xs uppercase tracking-[0.25em] text-vc-muted hover:text-vc-cyan"
+            >
+              Voir tout &rarr;
             </Link>
+          </div>
+          <ArticleCard article={featured} featured />
+        </section>
+      )}
+
+      <section className="mx-auto mt-20 max-w-6xl px-4 sm:px-6">
+        <div className="mb-6 flex items-end justify-between">
+          <h2 className="font-display text-2xl font-bold uppercase tracking-[0.2em] text-vc-text sm:text-3xl">
+            <span className="text-vc-cyan">{"//"}</span> Dernières dépêches
+          </h2>
+          <Link
+            href="/fr/news"
+            className="font-mono text-xs uppercase tracking-[0.25em] text-vc-muted hover:text-vc-cyan"
+          >
+            Toutes les actualités &rarr;
+          </Link>
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {recent.slice(1).map((a) => (
+            <ArticleCard key={a.slug} article={a} />
           ))}
         </div>
       </section>
 
-      {/* Info Section */}
-      <section className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-gray-900/50 border border-cyan-500/30 p-6 rounded-lg">
-          <h3 className="text-cyan-400 font-black mb-2">📊 VERIFIED</h3>
-          <p className="text-gray-300 text-sm">
-            Information confirmée par Rockstar ou sources officielles.
-          </p>
-        </div>
-        <div className="bg-gray-900/50 border border-cyan-500/30 p-6 rounded-lg">
-          <h3 className="text-yellow-500 font-black mb-2">🟡 RUMOR</h3>
-          <p className="text-gray-300 text-sm">
-            Basé sur leaks, spéculations, ou données partiellement confirmées.
-          </p>
-        </div>
-        <div className="bg-gray-900/50 border border-cyan-500/30 p-6 rounded-lg">
-          <h3 className="text-cyan-400 font-black mb-2">📡 24/7</h3>
-          <p className="text-gray-300 text-sm">
-            Monitoring Rockstar/Take-Two pour breakings news en temps réel.
-          </p>
-        </div>
-      </section>
-
-      {/* Newsletter Section */}
-      <section className="bg-cyan-600/10 border-y border-cyan-500/30 py-12">
-        <div className="max-w-2xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-black text-cyan-400 mb-4">
-            🔔 NEWSLETTER
-          </h2>
-          <p className="text-gray-300 mb-6">
-            Recevez breakings news & analyses exclusives dans votre inbox
-          </p>
-          <div className="flex gap-2">
-            <input
-              type="email"
-              placeholder="Votre email..."
-              className="flex-1 bg-gray-900 border border-cyan-500/30 rounded px-4 py-3 text-white placeholder-gray-500"
-            />
-            <button className="bg-cyan-600 hover:bg-cyan-700 text-black font-black px-6 py-3 rounded transition">
-              S'inscrire
-            </button>
+      <section className="mx-auto mt-24 max-w-6xl px-4 sm:px-6">
+        <div className="grid gap-4 rounded-2xl border border-vc-border bg-black/40 p-6 sm:grid-cols-3 sm:p-8">
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-emerald-300">
+              Vérifié
+            </div>
+            <p className="mt-2 text-sm text-vc-muted">
+              Sourced et corroboré par au moins deux canaux indépendants.
+              Nous disons qui et quand.
+            </p>
+          </div>
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-vc-yellow">
+              Rumeur
+            </div>
+            <p className="mt-2 text-sm text-vc-muted">
+              Assez crédible pour publier, non confirmé. Nous vous disons
+              exactement ce que nous savons et ce qui reste incertain.
+            </p>
+          </div>
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-vc-pink">
+              Réfuté
+            </div>
+            <p className="mt-2 text-sm text-vc-muted">
+              Prouvé faux. Nous remontons la chaîne, contactons la source,
+              et montrons les preuves.
+            </p>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-black border-t border-cyan-500/30 py-8">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-            <div>
-              <h4 className="text-cyan-400 font-black mb-3">Navigation</h4>
-              <ul className="text-sm text-gray-400 space-y-1">
-                <li><Link href="/fr" className="hover:text-cyan-400">Accueil</Link></li>
-                <li><Link href="/fr/about" className="hover:text-cyan-400">À Propos</Link></li>
-                <li><Link href="/fr/contact" className="hover:text-cyan-400">Contact</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-cyan-400 font-black mb-3">Ressources</h4>
-              <ul className="text-sm text-gray-400 space-y-1">
-                <li><a href="https://rockstargames.com" className="hover:text-cyan-400" target="_blank" rel="noopener noreferrer">Rockstar Officiel</a></li>
-                <li><a href="https://ir.take2games.com" className="hover:text-cyan-400" target="_blank" rel="noopener noreferrer">Take-Two IR</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-cyan-400 font-black mb-3">Légal</h4>
-              <ul className="text-sm text-gray-400 space-y-1">
-                <li><Link href="/fr/terms" className="hover:text-cyan-400">Conditions</Link></li>
-                <li><Link href="/fr/privacy" className="hover:text-cyan-400">Confidentialité</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-cyan-400 font-black mb-3">Langues</h4>
-              <ul className="text-sm text-gray-400 space-y-1">
-                <li><Link href="/" className="hover:text-cyan-400">English</Link></li>
-                <li><Link href="/fr" className="text-cyan-400 font-bold">Français</Link></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-cyan-500/30 pt-6 text-center text-sm text-gray-500">
-            <p>© 2026 GTA 6 Vault. GTA™ is a trademark of Rockstar Games.</p>
-            <p className="mt-2 text-xs">Une source d'informations non-officielle | Not affiliated with Rockstar Games</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
-};
-
-export default FrenchHome;
+}
