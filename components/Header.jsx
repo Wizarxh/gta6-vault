@@ -21,6 +21,7 @@ const LANGUAGES = [
 export default function Header() {
   const [currentLang, setCurrentLang] = useState("en");
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -180,7 +181,11 @@ export default function Header() {
         </nav>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden p-2 rounded-md text-vc-muted hover:text-vc-cyan hover:bg-vc-cyan/5 transition-all">
+        <button 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden p-2 rounded-md text-vc-muted hover:text-vc-cyan hover:bg-vc-cyan/5 transition-all"
+          aria-label="Toggle menu"
+        >
           <svg
             className="w-6 h-6"
             fill="none"
@@ -198,42 +203,48 @@ export default function Header() {
       </div>
 
       {/* Mobile Navigation */}
-      <nav className="md:hidden border-t border-vc-border/50 bg-black/50 backdrop-blur px-4 py-2">
-        <div className="flex flex-col gap-1">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="px-3 py-2 rounded-md font-mono text-xs uppercase tracking-[0.25em] text-vc-muted hover:text-vc-cyan hover:bg-vc-cyan/5 transition-all"
+      {isMobileMenuOpen && (
+        <nav className="md:hidden border-t border-vc-border/50 bg-black/95 backdrop-blur px-4 py-3">
+          <div className="flex flex-col gap-2">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="px-3 py-2 rounded-md font-mono text-xs uppercase tracking-[0.25em] text-vc-muted hover:text-vc-cyan hover:bg-vc-cyan/5 transition-all"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="px-3 py-2 rounded-md font-mono text-xs uppercase tracking-[0.25em] text-vc-muted hover:text-vc-cyan hover:bg-vc-cyan/5 transition-all text-left w-full"
             >
-              {link.label}
-            </Link>
-          ))}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="px-3 py-2 rounded-md font-mono text-xs uppercase tracking-[0.25em] text-vc-muted hover:text-vc-cyan hover:bg-vc-cyan/5 transition-all text-left"
-          >
-            Language: {currentLang.toUpperCase()}
-          </button>
-          {isOpen && (
-            <div className="border border-vc-border rounded-md bg-black/50 backdrop-blur p-1 mt-1">
-              {LANGUAGES.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => switchLanguage(lang.code)}
-                  className={`block w-full px-3 py-2 text-left font-mono text-xs uppercase tracking-[0.25em] transition-colors ${
-                    currentLang === lang.code
-                      ? "bg-vc-cyan/20 text-vc-cyan"
-                      : "text-vc-muted hover:bg-white/5 hover:text-vc-cyan"
-                  }`}
-                >
-                  {lang.label}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      </nav>
+              Language: {currentLang.toUpperCase()}
+            </button>
+            {isOpen && (
+              <div className="border border-vc-border rounded-md bg-black/50 backdrop-blur p-1">
+                {LANGUAGES.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => {
+                      switchLanguage(lang.code);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`block w-full px-3 py-2 text-left font-mono text-xs uppercase tracking-[0.25em] transition-colors ${
+                      currentLang === lang.code
+                        ? "bg-vc-cyan/20 text-vc-cyan"
+                        : "text-vc-muted hover:bg-white/5 hover:text-vc-cyan"
+                    }`}
+                  >
+                    {lang.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </nav>
+      )}
     </header>
   );
 }

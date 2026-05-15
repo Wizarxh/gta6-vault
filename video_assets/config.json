@@ -1,0 +1,47 @@
+{
+  "project": "GTA6V_FrameByFrame_Test",
+  "duration": 45,
+  "resolution": "1080x1920",
+  "fps": 30,
+  "audio": {
+    "codec": "aac",
+    "bitrate": "128k",
+    "sample_rate": 48000
+  },
+  "video": {
+    "codec": "h264",
+    "bitrate": "10M"
+  },
+  "scenes": [
+    {
+      "name": "hook",
+      "start": 0,
+      "end": 3,
+      "type": "title"
+    },
+    {
+      "name": "content_1",
+      "start": 3,
+      "end": 10,
+      "type": "comparison"
+    },
+    {
+      "name": "content_2",
+      "start": 10,
+      "end": 20,
+      "type": "detail"
+    },
+    {
+      "name": "content_3",
+      "start": 20,
+      "end": 30,
+      "type": "detail"
+    },
+    {
+      "name": "cta",
+      "start": 40,
+      "end": 45,
+      "type": "cta"
+    }
+  ]
+}
