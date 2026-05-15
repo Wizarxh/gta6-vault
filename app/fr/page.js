@@ -2,9 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Navigation } from '@/components/Navigation';
-import { Countdown } from '@/components/Countdown';
-import { BreakingTicker } from '@/components/BreakingTicker';
+import Countdown from '@/components/Countdown';
+import BreakingTicker from '@/components/BreakingTicker';
 
 const FrenchHome = () => {
   const [articles, setArticles] = useState([]);
