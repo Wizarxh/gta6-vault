@@ -1,6 +1,6 @@
 import { Orbitron, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SITE } from "@/lib/site";
 
@@ -73,7 +73,7 @@ export default function RootLayout({ children }) {
       className={`${display.variable} ${body.variable} ${mono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar />
+        <Header />
         <main className="flex-1">{children}</main>
         <Footer />
       </body>

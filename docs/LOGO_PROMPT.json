@@ -1,0 +1,31 @@
+{
+  "project": "GTA6 Vault Logo",
+  "style": "Minimalist tech logo, Vice City neon aesthetic",
+  "primary_subject": "Letter 'V' or 'GV' monogram in geometric style",
+  "colors": {
+    "primary": "#FF6B9D (Neon Pink)",
+    "secondary": "#00D4FF (Cyan)",
+    "background": "#0A0A0A (Dark)",
+    "effect": "Neon glow, luminous lines"
+  },
+  "elements": [
+    "Geometric letter V or GV",
+    "Neon glow effect",
+    "Clean lines, high contrast",
+    "Retro-futurism vibes",
+    "Premium gaming aesthetic"
+  ],
+  "mood": "Premium, gaming news, trustworthy, modern, energetic, sophisticated",
+  "vibes": "Vice City retro-futurism, cyberpunk, neon noir, tech-forward",
+  "size": "512x512 (primary), 2048x1024 (header), 256x256 (favicon)",
+  "contrast": "High contrast, bold, eye-catching",
+  "brand_fit": "Gaming news platform, trustworthy source, modern tech aesthetic",
+
+  "primary_prompt": "Minimalist geometric logo for GTA6 Vault gaming news platform. Feature a stylized letter 'V' or 'GV' monogram in bold, clean lines. Neon pink (#FF6B9D) glowing lines on dark background (#0A0A0A) with cyan (#00D4FF) accents. Premium, modern, trustworthy aesthetic with Vice City retro-futurism vibes. High contrast, clean design, suitable for 512x512 resolution. Luminous neon glow effect.",
+
+  "variant_1_prompt": "Premium tech logo: Geometric 'GV' monogram with stacked letters. Neon pink primary color, cyan secondary. Dark background. Clean, minimalist design with subtle glow. High contrast, modern gaming aesthetic. Vice City neon vibes.",
+
+  "variant_2_prompt": "Gaming news logo: Letter 'V' inside a geometric hexagon or circle. Neon pink glowing lines, cyan accents. Dark background. Futuristic, trustworthy design. Premium tech aesthetic with cyberpunk influences.",
+
+  "variant_3_prompt": "Brand logo: Abstract 'V' shape with neon glow. Neon pink and cyan colors. Dark background. Minimalist, bold design. Modern gaming platform aesthetic. High impact, memorable mark."
+}
