@@ -52,19 +52,14 @@ export default function HomePage() {
               what&apos;s real.
             </p>
 
-            {/* COUNTDOWN DISABLED FOR DEBUG */}
-            {false && (
-              <div className="mt-10 w-full">
-                <div className="mx-auto inline-block rounded-2xl border border-vc-border bg-black/60 px-4 py-5 sm:px-8 sm:py-7 neon-border">
-                  <div className="mb-3 text-center font-mono text-[10px] uppercase tracking-[0.4em] text-vc-muted">
-                    Launch Countdown &middot; 19 November 2026
-                  </div>
-                  <div suppressHydrationWarning>
-                    <Countdown targetISO={SITE.releaseDate} />
-                  </div>
+            <div className="mt-10 w-full">
+              <div className="mx-auto inline-block rounded-2xl border border-vc-border bg-black/60 px-4 py-5 sm:px-8 sm:py-7 neon-border">
+                <div className="mb-3 text-center font-mono text-[10px] uppercase tracking-[0.4em] text-vc-muted">
+                  Launch Countdown &middot; 19 November 2026
                 </div>
+                <Countdown targetISO={SITE.releaseDate} />
               </div>
-            )}
+            </div>
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <Link
