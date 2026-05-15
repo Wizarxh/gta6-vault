@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Navbar from '@/components/Navbar';
 import Countdown from '@/components/Countdown';
 import BreakingTicker from '@/components/BreakingTicker';
 
@@ -75,18 +76,8 @@ const FrenchHome = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Navigation */}
-      <nav className="border-b border-cyan-500/30 bg-black/50 backdrop-blur">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/fr" className="text-2xl font-bold text-cyan-400">
-            GTA 6 VAULT 🇫🇷
-          </Link>
-          <div className="flex gap-6">
-            <Link href="/" className="text-sm hover:text-cyan-400 transition">EN</Link>
-            <Link href="/fr" className="text-sm font-bold text-cyan-400">FR</Link>
-          </div>
-        </div>
-      </nav>
+      {/* Navigation - Using shared Navbar component */}
+      <Navbar />
 
       {/* Countdown */}
       {mounted && <Countdown />}

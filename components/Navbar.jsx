@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import Logo from "./Logo";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const LINKS = [
   { href: "/", label: "Home" },
@@ -18,13 +17,19 @@ const LANGUAGES = [
 ];
 
 export default function Navbar() {
-  const pathname = usePathname();
-  const isFreench = pathname.startsWith("/fr");
-  const currentLang = isFreench ? "fr" : "en";
+  const [currentLang, setCurrentLang] = useState("en");
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    // Detect current language from URL
+    const isFreench = window.location.pathname.startsWith("/fr");
+    setCurrentLang(isFreench ? "fr" : "en");
+  }, []);
 
   const switchLanguage = (code) => {
-    const currentPath = pathname;
+    const currentPath = window.location.pathname;
     let newPath = currentPath;
 
     if (code === "fr") {
@@ -41,6 +46,31 @@ export default function Navbar() {
     setIsOpen(false);
   };
 
+  if (!mounted) {
+    return (
+      <header className="sticky top-0 z-40 border-b border-vc-border bg-black/70 backdrop-blur-md">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+          <Logo />
+          <nav aria-label="Primary" className="flex items-center gap-1 sm:gap-2">
+            {LINKS.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="rounded-md px-3 py-1.5 font-mono text-xs uppercase tracking-[0.25em] text-vc-muted transition-colors hover:bg-white/5 hover:text-vc-cyan"
+              >
+                {l.label}
+              </Link>
+            ))}
+            {/* Language Selector Placeholder */}
+            <div className="ml-2 border-l border-vc-border pl-2 sm:ml-4 sm:pl-4">
+              <div className="rounded-md px-3 py-1.5 font-mono text-xs uppercase tracking-[0.25em] text-vc-muted">EN</div>
+            </div>
+          </nav>
+        </div>
+      </header>
+    );
+  }
+
   return (
     <header className="sticky top-0 z-40 border-b border-vc-border bg-black/70 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
@@ -48,9 +78,9 @@ export default function Navbar() {
         <nav aria-label="Primary" className="flex items-center gap-1 sm:gap-2">
           {LINKS.map((l) => {
             let href = l.href;
-            if (isFreench && l.href !== "/newsletter") {
+            if (currentLang === "fr" && l.href !== "/newsletter") {
               href = "/fr" + (l.href === "/" ? "" : l.href);
-            } else if (!isFreench && l.href.startsWith("/fr")) {
+            } else if (currentLang === "en" && l.href.startsWith("/fr")) {
               href = l.href.replace(/^\/fr/, "") || "/";
             }
             return (

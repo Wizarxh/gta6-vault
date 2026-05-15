@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { SITE } from "@/lib/site";
 
 const NAV_LINKS = [
@@ -9,7 +12,40 @@ const NAV_LINKS = [
   { href: "/newsletter", label: "Newsletter" },
 ];
 
+const LANGUAGES = [
+  { code: "en", label: "English" },
+  { code: "fr", label: "Français" },
+];
+
 export default function Header() {
+  const [currentLang, setCurrentLang] = useState("en");
+  const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    // Detect current language from URL
+    const isFreench = window.location.pathname.startsWith("/fr");
+    setCurrentLang(isFreench ? "fr" : "en");
+  }, []);
+
+  const switchLanguage = (code) => {
+    const currentPath = window.location.pathname;
+    let newPath = currentPath;
+
+    if (code === "fr") {
+      if (!currentPath.startsWith("/fr")) {
+        newPath = "/fr" + (currentPath === "/" ? "" : currentPath);
+      }
+    } else {
+      if (currentPath.startsWith("/fr")) {
+        newPath = currentPath.replace(/^\/fr/, "") || "/";
+      }
+    }
+
+    window.location.href = newPath;
+    setIsOpen(false);
+  };
   return (
     <header className="sticky top-0 z-50 border-b border-vc-border bg-gradient-to-r from-black via-black to-black/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
@@ -92,6 +128,50 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          
+          {/* Language Selector */}
+          <div className="ml-2 border-l border-vc-border pl-2 relative">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="flex items-center gap-1 px-3 py-2 rounded-md font-mono text-xs uppercase tracking-[0.25em] text-vc-muted transition-all duration-200 hover:text-vc-cyan hover:bg-vc-cyan/5"
+              aria-label="Select language"
+            >
+              {mounted ? currentLang.toUpperCase() : "EN"}
+              <svg
+                className={`h-3 w-3 transition-transform ${
+                  isOpen ? "rotate-180" : ""
+                }`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                />
+              </svg>
+            </button>
+
+            {isOpen && mounted && (
+              <div className="absolute right-0 mt-1 w-40 rounded-md border border-vc-border bg-black/95 backdrop-blur-sm py-1 z-50">
+                {LANGUAGES.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => switchLanguage(lang.code)}
+                    className={`block w-full px-4 py-2 text-left font-mono text-xs uppercase tracking-[0.25em] transition-colors ${
+                      currentLang === lang.code
+                        ? "bg-vc-cyan/20 text-vc-cyan"
+                        : "text-vc-muted hover:bg-white/5 hover:text-vc-cyan"
+                    }`}
+                  >
+                    {lang.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -124,6 +204,29 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="px-3 py-2 rounded-md font-mono text-xs uppercase tracking-[0.25em] text-vc-muted hover:text-vc-cyan hover:bg-vc-cyan/5 transition-all text-left"
+          >
+            Language: {mounted ? currentLang.toUpperCase() : "EN"}
+          </button>
+          {isOpen && mounted && (
+            <div className="border border-vc-border rounded-md bg-black/50 backdrop-blur p-1 mt-1">
+              {LANGUAGES.map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => switchLanguage(lang.code)}
+                  className={`block w-full px-3 py-2 text-left font-mono text-xs uppercase tracking-[0.25em] transition-colors ${
+                    currentLang === lang.code
+                      ? "bg-vc-cyan/20 text-vc-cyan"
+                      : "text-vc-muted hover:bg-white/5 hover:text-vc-cyan"
+                  }`}
+                >
+                  {lang.label}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </nav>
     </header>
