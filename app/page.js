@@ -40,16 +40,16 @@ export default function HomePage() {
               <span className="size-1.5 rounded-full bg-vc-cyan vc-pulse" />
               Premium GTA 6 newsroom
             </span>
-            <h1 className="mt-6 font-display text-5xl font-black uppercase leading-[0.95] tracking-tight sm:text-7xl md:text-8xl">
+            <h1 className="mt-6 font-display text-4xl font-black uppercase leading-[0.95] tracking-tight sm:text-6xl md:text-7xl">
               <span className="block chrome-text neon-text">Welcome back</span>
               <span className="block chrome-text neon-text">to Vice City.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-base text-vc-muted sm:text-lg">
               {SITE.tagline} Every leak, trailer frame, and rumor — tagged{" "}
-              <span className="text-emerald-300">Verified</span>,{" "}
-              <span className="text-vc-yellow">Rumor</span>, or{" "}
-              <span className="text-vc-pink">Debunked</span> so you always know
-              what&apos;s real.
+              <span className="text-emerald-300">Verified</span>
+              {" "}, <span className="text-vc-yellow">Rumor</span>
+              {" "}, or <span className="text-vc-pink">Debunked</span>
+              {" "}so you always know what&apos;s real.
             </p>
 
             <div className="mt-10 w-full">

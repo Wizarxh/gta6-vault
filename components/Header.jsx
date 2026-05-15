@@ -50,7 +50,7 @@ export default function Header() {
   if (!mounted) {
     return (
       <header className="sticky top-0 z-40 border-b border-vc-border bg-gradient-to-r from-black via-black to-black/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5 sm:px-6">
           <Link href="/" className="flex items-center gap-3">
             <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0">
               <Image
@@ -95,7 +95,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-vc-border bg-gradient-to-r from-black via-black to-black/80 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5 sm:px-6">
         {/* Logo + Brand Name */}
         <Link href="/" className="flex items-center gap-3 group">
           {/* Logo Image with Glow Effect on Hover */}
