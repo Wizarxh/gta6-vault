@@ -57,7 +57,9 @@ export default function HomePage() {
                 <div className="mb-3 text-center font-mono text-[10px] uppercase tracking-[0.4em] text-vc-muted">
                   Launch Countdown &middot; 19 November 2026
                 </div>
-                <Countdown targetISO={SITE.releaseDate} />
+                <div suppressHydrationWarning>
+                  <Countdown targetISO={SITE.releaseDate} />
+                </div>
               </div>
             </div>
 
