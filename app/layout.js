@@ -51,6 +51,19 @@ export const metadata = {
     description: SITE.description,
     url: SITE.url,
     locale: SITE.locale,
+    images: [
+      {
+        url: "/logo-lg.png",
+        width: 2048,
+        height: 2048,
+        alt: "GTA6 Vault Logo",
+        type: "image/png",
+      },
+    ],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/logo.png",
   },
   twitter: {
     card: "summary_large_image",
@@ -58,6 +71,7 @@ export const metadata = {
     creator: SITE.twitter,
     title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
+    image: "/logo-lg.png",
   },
   robots: { index: true, follow: true },
 };
