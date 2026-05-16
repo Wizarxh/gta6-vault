@@ -23,8 +23,8 @@ export default function ArticleCard({ article, featured = false }) {
         }`}
         style={{ backgroundImage: `url('${article.hero}')` }}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.18),transparent_50%)]" />
-        <div className="absolute inset-0 mix-blend-overlay bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.6))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 mix-blend-overlay bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.35))]" />
         <div className="absolute left-3 top-3 flex items-center gap-2">
           <StatusBadge status={article.status} />
           {article.breaking && (
