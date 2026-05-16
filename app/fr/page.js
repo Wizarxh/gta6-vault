@@ -65,7 +65,7 @@ export default function FrenchHomePage() {
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <Link
-                href="/fr/news"
+                href="/fr/articles"
                 className="inline-flex h-11 items-center justify-center rounded-full bg-vc-pink px-6 font-mono text-xs font-bold uppercase tracking-[0.25em] text-black transition-transform hover:-translate-y-0.5"
               >
                 Lire les actualités
@@ -88,13 +88,13 @@ export default function FrenchHomePage() {
               <span className="text-vc-pink">{"//"}</span> Vedettes
             </h2>
             <Link
-              href="/fr/news"
+              href="/fr/articles"
               className="font-mono text-xs uppercase tracking-[0.25em] text-vc-muted hover:text-vc-cyan"
             >
               Voir tout &rarr;
             </Link>
           </div>
-          <ArticleCard article={featured} featured />
+          <ArticleCard article={featured} featured basePath="/fr/articles" />
         </section>
       )}
 
@@ -104,7 +104,7 @@ export default function FrenchHomePage() {
             <span className="text-vc-cyan">{"//"}</span> Dernières dépêches
           </h2>
           <Link
-            href="/fr/news"
+            href="/fr/articles"
             className="font-mono text-xs uppercase tracking-[0.25em] text-vc-muted hover:text-vc-cyan"
           >
             Toutes les actualités &rarr;
@@ -112,7 +112,7 @@ export default function FrenchHomePage() {
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {recent.slice(1).map((a) => (
-            <ArticleCard key={a.slug} article={a} />
+            <ArticleCard key={a.slug} article={a} basePath="/fr/articles" />
           ))}
         </div>
       </section>
