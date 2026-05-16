@@ -10,6 +10,14 @@ function formatDate(iso) {
 }
 
 export default function ArticleCard({ article, featured = false }) {
+  // Generate dynamic OG image URL
+  const imageParams = new URLSearchParams({
+    title: article.title,
+    status: article.status,
+    category: article.category,
+  });
+  const imageUrl = `/api/article-image?${imageParams.toString()}`;
+
   return (
     <Link
       href={`/news/${article.slug}`}
@@ -18,10 +26,10 @@ export default function ArticleCard({ article, featured = false }) {
       }`}
     >
       <div
-        className={`relative shrink-0 overflow-hidden ${
+        className={`relative shrink-0 overflow-hidden bg-cover bg-center ${
           featured ? "md:w-1/2 aspect-[16/9] md:aspect-auto" : "aspect-[16/9]"
         }`}
-        style={{ background: article.hero }}
+        style={{ backgroundImage: `url('${imageUrl}')` }}
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.18),transparent_50%)]" />
         <div className="absolute inset-0 mix-blend-overlay bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.6))]" />

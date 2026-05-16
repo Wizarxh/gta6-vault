@@ -99,8 +99,8 @@ export default function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5 sm:px-6">
         {/* Logo + Brand Name */}
         <Link href="/" className="flex items-center gap-3 group">
-          {/* Logo Image with Glow Effect on Hover */}
-          <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 transition-all duration-200 group-hover:drop-shadow-[0_0_12px_rgba(255,107,157,0.8)] group-hover:drop-shadow-[0_0_16px_rgba(0,212,255,0.6)]">
+          {/* Logo Image with Glow Effect on Hover (no background) */}
+          <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 transition-all duration-300 group-hover:drop-shadow-[0_0_16px_rgba(255,107,157,0.6)] group-hover:drop-shadow-[0_0_20px_rgba(0,212,255,0.4)]">
             <Image
               src={logo}
               alt="GTA6 Vault Logo"
@@ -112,12 +112,12 @@ export default function Header() {
           </div>
 
           {/* Brand Name */}
-          <div className="hidden sm:block">
+          <div className="hidden sm:block transition-opacity duration-200 group-hover:opacity-90">
             <div className="font-display font-black text-lg sm:text-xl uppercase tracking-[0.1em]">
-              <span className="text-vc-pink">GTA</span>
-              <span className="text-vc-cyan">6</span>
+              <span className="text-vc-pink group-hover:drop-shadow-[0_0_8px_rgba(255,107,157,0.8)] transition-all">GTA</span>
+              <span className="text-vc-cyan group-hover:drop-shadow-[0_0_8px_rgba(0,212,255,0.8)] transition-all">6</span>
             </div>
-            <div className="font-mono text-xs uppercase tracking-[0.3em] text-vc-muted -mt-1">
+            <div className="font-mono text-xs uppercase tracking-[0.3em] text-vc-muted -mt-1 group-hover:text-vc-cyan/80 transition-colors">
               Vault
             </div>
           </div>
