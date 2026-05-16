@@ -80,7 +80,12 @@ export default async function ArticlePage({ params }) {
 
       <header
         className="relative isolate overflow-hidden border-b border-vc-border"
-        style={{ background: article.hero }}
+        style={{
+          backgroundImage: article.hero.startsWith("url(") ? article.hero : `url('${article.hero}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.18),transparent_55%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(10,10,10,0.92))]" />
