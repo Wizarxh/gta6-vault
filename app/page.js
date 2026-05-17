@@ -2,6 +2,7 @@ import Link from "next/link";
 import Countdown from "@/components/Countdown";
 import ArticleCard from "@/components/ArticleCard";
 import BreakingTicker from "@/components/BreakingTicker";
+import PreOrderModal from "@/components/PreOrderModal";
 import {
   getAllArticles,
   getBreakingArticles,
@@ -38,7 +39,8 @@ export default function HomePage() {
   const featured = getAllArticles()[0];
 
   return (
-    <div>
+    <>
+      <PreOrderModal />
       <BreakingTicker items={breaking} />
 
       <section className="relative isolate overflow-hidden scanline">
@@ -73,6 +75,49 @@ export default function HomePage() {
               </div>
             </div>
 
+            {/* Pre-Order Section */}
+            <div className="mt-16 rounded-xl border border-vc-border bg-black/40 p-8 sm:p-12">
+              <h3 className="font-mono text-xs uppercase tracking-[0.3em] text-vc-cyan">Coming Soon</h3>
+              <h2 className="mt-3 font-display text-2xl font-bold text-white">Pre-Order Now</h2>
+              <p className="mt-2 text-sm text-vc-text/80">
+                Get GTA 6 on your platform of choice. Pre-orders opening soon.
+              </p>
+              
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
+                {/* PS5 */}
+                <div className="flex-1 rounded-lg border border-vc-border bg-black/60 p-6 text-center hover:border-vc-cyan/60 transition-colors cursor-pointer group">
+                  <div className="flex justify-center mb-3">
+                    <svg className="w-12 h-12 text-white group-hover:text-vc-cyan transition-colors" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22.5C6.2 22.5 1.5 17.8 1.5 12S6.2 1.5 12 1.5 22.5 6.2 22.5 12 17.8 22.5 12 22.5z" />
+                    </svg>
+                  </div>
+                  <h4 className="font-mono text-sm font-bold uppercase tracking-[0.2em] text-white">
+                    PlayStation 5
+                  </h4>
+                  <p className="mt-2 text-xs text-vc-muted">Ultra HD • 60 FPS</p>
+                  <button className="mt-4 w-full rounded-lg bg-vc-cyan/10 px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.2em] text-vc-cyan hover:bg-vc-cyan/20 transition-colors">
+                    Notify Me
+                  </button>
+                </div>
+                
+                {/* Xbox */}
+                <div className="flex-1 rounded-lg border border-vc-border bg-black/60 p-6 text-center hover:border-vc-cyan/60 transition-colors cursor-pointer group">
+                  <div className="flex justify-center mb-3">
+                    <svg className="w-12 h-12 text-white group-hover:text-vc-cyan transition-colors" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22.5C6.2 22.5 1.5 17.8 1.5 12S6.2 1.5 12 1.5 22.5 6.2 22.5 12 17.8 22.5 12 22.5z" />
+                    </svg>
+                  </div>
+                  <h4 className="font-mono text-sm font-bold uppercase tracking-[0.2em] text-white">
+                    Xbox Series X|S
+                  </h4>
+                  <p className="mt-2 text-xs text-vc-muted">4K • 60 FPS</p>
+                  <button className="mt-4 w-full rounded-lg bg-vc-cyan/10 px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.2em] text-vc-cyan hover:bg-vc-cyan/20 transition-colors">
+                    Notify Me
+                  </button>
+                </div>
+              </div>
+            </div>
+
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
               <Link
                 href="/news"
@@ -81,10 +126,16 @@ export default function HomePage() {
                 Read the news
               </Link>
               <Link
-                href="/about"
+                href="/lore"
                 className="inline-flex h-12 sm:h-11 items-center justify-center rounded-full border border-vc-cyan/60 bg-transparent px-6 sm:px-6 py-3 sm:py-0 font-mono text-xs sm:text-xs font-bold uppercase tracking-[0.25em] text-vc-cyan transition-colors hover:bg-vc-cyan/10 active:bg-vc-cyan/5"
               >
-                About the Vault
+                Explore Lore
+              </Link>
+              <Link
+                href="/tips"
+                className="inline-flex h-12 sm:h-11 items-center justify-center rounded-full border border-vc-cyan/60 bg-transparent px-6 sm:px-6 py-3 sm:py-0 font-mono text-xs sm:text-xs font-bold uppercase tracking-[0.25em] text-vc-cyan transition-colors hover:bg-vc-cyan/10 active:bg-vc-cyan/5"
+              >
+                Cheats & Guides
               </Link>
             </div>
           </div>
@@ -158,6 +209,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }
