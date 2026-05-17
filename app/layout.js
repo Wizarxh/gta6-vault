@@ -98,6 +98,21 @@ export default function RootLayout({ children }) {
     >
       <head>
         <SchemaMarkup />
+        {/* Google Analytics */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-T7GC4N72SM"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-T7GC4N72SM');
+            `,
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col relative z-10">
         <SchemaMarkup />
