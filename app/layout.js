@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import VideoBackground from "@/components/VideoBackground";
 import SchemaMarkup from "@/components/SchemaMarkup";
+import CookieConsent from "@/components/CookieConsent";
 import { SITE } from "@/lib/site";
 
 const display = Orbitron({
@@ -111,7 +112,8 @@ export default function RootLayout({ children }) {
         <Header />
         <main className="flex-1 relative z-30">{children}</main>
         <Footer />
-        {/* Google Analytics 4 */}
+        <CookieConsent />
+        {/* Google Analytics 4 - GDPR Compliant */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-T7GC4N72SM"
           strategy="afterInteractive"
@@ -124,7 +126,23 @@ export default function RootLayout({ children }) {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-T7GC4N72SM');
+              
+              // Check consent status
+              const consent = localStorage.getItem('gta6vault-consent');
+              const consentStatus = consent ? JSON.parse(consent).accepted : false;
+              
+              // Set initial consent state
+              gtag('consent', 'default', {
+                'analytics_storage': consentStatus ? 'granted' : 'denied',
+                'ad_storage': consentStatus ? 'granted' : 'denied',
+                'ad_user_data': consentStatus ? 'granted' : 'denied',
+                'ad_personalization': consentStatus ? 'granted' : 'denied'
+              });
+              
+              gtag('config', 'G-T7GC4N72SM', {
+                'page_path': window.location.pathname,
+                'anonymize_ip': true
+              });
             `,
           }}
         />
