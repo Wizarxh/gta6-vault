@@ -1,17 +1,36 @@
 import Link from "next/link";
+import Image from "next/image";
 import { SITE } from "@/lib/site";
+import logo from "@/public/logo.png";
 
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="mt-24 border-t border-vc-border bg-black/40">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-5">
         <div>
-          <div className="font-mono text-sm uppercase tracking-[0.3em]">
-            <span className="text-vc-pink">GTA6</span>
-            <span className="text-vc-cyan">Vault</span>
+          {/* Logo + Brand */}
+          <div className="flex items-center gap-3 mb-4">
+            <div className="relative w-10 h-10 flex-shrink-0">
+              <Image
+                src={logo}
+                alt="GTA6 Vault Logo"
+                width={40}
+                height={40}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div>
+              <div className="font-display font-black text-sm uppercase tracking-[0.1em]">
+                <span className="text-vc-pink">GTA</span>
+                <span className="text-vc-cyan">6</span>
+              </div>
+              <div className="font-mono text-xs uppercase tracking-[0.3em] text-vc-muted -mt-0.5">
+                Vault
+              </div>
+            </div>
           </div>
-          <p className="mt-3 max-w-xs text-sm text-vc-muted">
+          <p className="mt-4 max-w-xs text-sm text-vc-muted">
             {SITE.tagline} A premium hub for everything GTA 6 — every leak,
             every trailer frame, every rumor put on the record.
           </p>
@@ -59,6 +78,88 @@ export default function Footer() {
             <li>
               <span className="text-vc-pink">DEBUNKED</span> — proven false on
               record
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div className="font-mono text-xs uppercase tracking-[0.3em] text-vc-muted">
+            Contact
+          </div>
+          <ul className="mt-4 space-y-3 text-sm">
+            <li>
+              <a
+                href={`mailto:${SITE.email}`}
+                className="text-vc-muted hover:text-vc-cyan transition-colors"
+              >
+                📧 {SITE.email}
+              </a>
+            </li>
+            <li>
+              <a
+                href={SITE.twitterUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vc-muted hover:text-vc-cyan transition-colors"
+              >
+                𝕏 Twitter
+              </a>
+            </li>
+            <li>
+              <a
+                href={SITE.discord}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vc-muted hover:text-vc-cyan transition-colors"
+              >
+                🎮 Discord
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div className="font-mono text-xs uppercase tracking-[0.3em] text-vc-muted">
+            Follow
+          </div>
+          <ul className="mt-4 space-y-3 text-sm">
+            <li>
+              <a
+                href={SITE.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vc-muted hover:text-vc-cyan transition-colors"
+              >
+                📺 YouTube
+              </a>
+            </li>
+            <li>
+              <a
+                href={SITE.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vc-muted hover:text-vc-cyan transition-colors"
+              >
+                📷 Instagram
+              </a>
+            </li>
+            <li>
+              <a
+                href={SITE.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vc-muted hover:text-vc-cyan transition-colors"
+              >
+                f Facebook
+              </a>
+            </li>
+            <li>
+              <a
+                href={SITE.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vc-muted hover:text-vc-cyan transition-colors"
+              >
+                in LinkedIn
+              </a>
             </li>
           </ul>
         </div>

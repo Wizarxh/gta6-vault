@@ -9,22 +9,22 @@ function formatDate(iso) {
   });
 }
 
-export default function ArticleCard({ article, featured = false }) {
+export default function ArticleCard({ article, featured = false, basePath = "/news" }) {
   return (
     <Link
-      href={`/news/${article.slug}`}
+      href={`${basePath}/${article.slug}`}
       className={`group relative flex flex-col overflow-hidden rounded-2xl border border-vc-border bg-black/40 transition-all hover:border-vc-pink/50 hover:shadow-[0_0_40px_-10px_rgba(255,107,157,0.4)] ${
         featured ? "md:flex-row" : ""
       }`}
     >
       <div
-        className={`relative shrink-0 overflow-hidden ${
+        className={`relative shrink-0 overflow-hidden bg-cover bg-center ${
           featured ? "md:w-1/2 aspect-[16/9] md:aspect-auto" : "aspect-[16/9]"
         }`}
-        style={{ background: article.hero }}
+        style={{ backgroundImage: `url('${article.hero}')` }}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.18),transparent_50%)]" />
-        <div className="absolute inset-0 mix-blend-overlay bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.6))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 mix-blend-overlay bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.35))]" />
         <div className="absolute left-3 top-3 flex items-center gap-2">
           <StatusBadge status={article.status} />
           {article.breaking && (
@@ -55,7 +55,7 @@ export default function ArticleCard({ article, featured = false }) {
         </p>
         <div className="mt-auto flex items-center justify-between pt-3 text-[11px] font-mono uppercase tracking-[0.25em] text-vc-muted">
           <span>{formatDate(article.date)}</span>
-          <span>{article.readingTime} min read</span>
+          <span>{article.readingTime} {article.readingTime > 1 ? 'min read' : 'min read'}</span>
         </div>
       </div>
     </Link>

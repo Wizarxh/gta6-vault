@@ -5,11 +5,11 @@ export default function BreakingTicker({ items }) {
   const loop = [...items, ...items];
   return (
     <div className="relative overflow-hidden border-y border-vc-pink/30 bg-vc-pink/5">
-      <div className="absolute left-0 top-0 z-10 flex h-full items-center gap-2 bg-vc-pink px-3 font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-black">
+      <div className="absolute left-0 top-0 z-10 flex h-full items-center gap-2 bg-vc-pink px-3 font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-black whitespace-nowrap">
         <span className="size-1.5 rounded-full bg-black vc-pulse" />
         Breaking
       </div>
-      <div className="pl-28 py-2 sm:py-3">
+      <div className="pl-32 py-2 sm:py-3">
         <div className="flex w-max gap-12 vc-marquee whitespace-nowrap">
           {loop.map((a, i) => (
             <Link

@@ -10,10 +10,10 @@ export async function generateStaticParams() {
   return getAllArticles().map((a) => ({ slug: a.slug }));
 }
 
-const STATUS_COLOR = {
-  VERIFIED: "#34d399",
-  RUMOR: "#FFD23F",
-  DEBUNKED: "#FF6B9D",
+const STATUS_GRADIENT = {
+  VERIFIED: "linear-gradient(135deg, #34d399 0%, #10b981 100%)",
+  RUMOR: "linear-gradient(135deg, #FFD23F 0%, #f59e0b 100%)",
+  DEBUNKED: "linear-gradient(135deg, #FF6B9D 0%, #ff1493 100%)",
 };
 
 export default async function Image({ params }) {
@@ -22,7 +22,7 @@ export default async function Image({ params }) {
   const title = article?.title ?? "GTA6 Vault";
   const status = article?.status ?? "VERIFIED";
   const category = article?.category ?? "Dispatch";
-  const accent = STATUS_COLOR[status] ?? "#FF6B9D";
+  const gradient = STATUS_GRADIENT[status] ?? "linear-gradient(135deg, #FF6B9D 0%, #00D4FF 100%)";
 
   return new ImageResponse(
     (
@@ -34,9 +34,7 @@ export default async function Image({ params }) {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 64,
-          background:
-            article?.hero ??
-            "linear-gradient(135deg, #FF6B9D 0%, #00D4FF 100%)",
+          background: gradient,
           color: "#fff",
           fontFamily: "system-ui, sans-serif",
           position: "relative",
@@ -94,8 +92,8 @@ export default async function Image({ params }) {
             <div
               style={{
                 padding: "8px 16px",
-                border: `2px solid ${accent}`,
-                color: accent,
+                border: `2px solid rgba(255,255,255,0.8)`,
+                color: "#fff",
                 background: "rgba(0,0,0,0.45)",
                 borderRadius: 999,
                 fontSize: 16,

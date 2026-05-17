@@ -1,79 +1,91 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { SITE } from "@/lib/site";
 
-function Cell({ label, value }) {
-  const padded = String(value).padStart(2, "0");
-  return (
-    <div className="flex flex-col items-center min-w-[68px] sm:min-w-[88px]">
-      <div className="font-mono text-3xl sm:text-5xl md:text-6xl font-bold chrome-text leading-none tabular-nums tracking-tight">
-        {padded}
-      </div>
-      <div className="mt-2 text-[10px] sm:text-xs uppercase tracking-[0.3em] text-vc-muted">
-        {label}
-      </div>
-    </div>
-  );
-}
-
-export default function Countdown({ targetISO }) {
-  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, total: 1 });
-  const [mounted, setMounted] = useState(false);
+export default function Countdown() {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+    isReady: false,
+  });
 
   useEffect(() => {
-    setMounted(true);
+    // Calculate time left
+    const calculateTimeLeft = () => {
+      const releaseDate = new Date(SITE.releaseDate);
+      const now = new Date();
+      const difference = releaseDate.getTime() - now.getTime();
 
-    const interval = setInterval(() => {
-      const target = new Date(targetISO).getTime();
-      const total = Math.max(0, target - Date.now());
-      const days = Math.floor(total / 86400000);
-      const hours = Math.floor((total % 86400000) / 3600000);
-      const minutes = Math.floor((total % 3600000) / 60000);
-      const seconds = Math.floor((total % 60000) / 1000);
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60),
+          isReady: true,
+        });
+      } else {
+        setTimeLeft({
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+          isReady: true,
+        });
+      }
+    };
 
-      setTime({ days, hours, minutes, seconds, total });
-    }, 1000);
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
-    return () => clearInterval(interval);
-  }, [targetISO]);
-
-  // Render placeholder on server, real countdown after mount
-  if (!mounted) {
-    return (
-      <div suppressHydrationWarning className="flex items-center justify-center gap-2 sm:gap-5">
-        <Cell label="Days" value={0} />
-        <span className="text-vc-pink text-3xl sm:text-5xl font-bold vc-pulse">:</span>
-        <Cell label="Hours" value={0} />
-        <span className="text-vc-pink text-3xl sm:text-5xl font-bold vc-pulse">:</span>
-        <Cell label="Minutes" value={0} />
-        <span className="text-vc-pink text-3xl sm:text-5xl font-bold vc-pulse">:</span>
-        <Cell label="Seconds" value={0} />
-      </div>
-    );
-  }
-
-  if (time.total === 0) {
-    return (
-      <div className="text-center">
-        <div className="font-mono text-3xl sm:text-5xl font-bold chrome-text">
-          IT&apos;S LIVE.
-        </div>
-        <div className="mt-2 text-xs uppercase tracking-[0.3em] text-vc-muted">
-          November 19, 2026 — Welcome back to Vice City.
-        </div>
-      </div>
-    );
-  }
+  if (!timeLeft.isReady) return null;
 
   return (
-    <div className="flex items-center justify-center gap-2 sm:gap-5">
-      <Cell label="Days" value={time.days} />
-      <span className="text-vc-pink text-3xl sm:text-5xl font-bold vc-pulse">:</span>
-      <Cell label="Hours" value={time.hours} />
-      <span className="text-vc-pink text-3xl sm:text-5xl font-bold vc-pulse">:</span>
-      <Cell label="Minutes" value={time.minutes} />
-      <span className="text-vc-pink text-3xl sm:text-5xl font-bold vc-pulse">:</span>
-      <Cell label="Seconds" value={time.seconds} />
+    <div className="mx-auto inline-block rounded-2xl border border-vc-border bg-black/60 px-4 py-5 sm:px-8 sm:py-7 neon-border">
+      <div className="space-y-2 text-center">
+        <p className="font-mono text-xs uppercase tracking-[0.3em] text-vc-cyan">
+          Launch in
+        </p>
+        <div className="grid grid-cols-4 gap-2 sm:gap-4">
+          <div className="flex flex-col items-center">
+            <div className="font-display text-3xl sm:text-4xl font-black text-vc-pink">
+              {String(timeLeft.days).padStart(2, "0")}
+            </div>
+            <p className="mt-1 font-mono text-xs uppercase tracking-[0.2em] text-vc-muted">
+              Days
+            </p>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="font-display text-3xl sm:text-4xl font-black text-vc-cyan">
+              {String(timeLeft.hours).padStart(2, "0")}
+            </div>
+            <p className="mt-1 font-mono text-xs uppercase tracking-[0.2em] text-vc-muted">
+              Hours
+            </p>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="font-display text-3xl sm:text-4xl font-black text-vc-pink">
+              {String(timeLeft.minutes).padStart(2, "0")}
+            </div>
+            <p className="mt-1 font-mono text-xs uppercase tracking-[0.2em] text-vc-muted">
+              Mins
+            </p>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="font-display text-3xl sm:text-4xl font-black text-vc-cyan">
+              {String(timeLeft.seconds).padStart(2, "0")}
+            </div>
+            <p className="mt-1 font-mono text-xs uppercase tracking-[0.2em] text-vc-muted">
+              Secs
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

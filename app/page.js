@@ -40,37 +40,37 @@ export default function HomePage() {
               <span className="size-1.5 rounded-full bg-vc-cyan vc-pulse" />
               Premium GTA 6 newsroom
             </span>
-            <h1 className="mt-6 font-display text-5xl font-black uppercase leading-[0.95] tracking-tight sm:text-7xl md:text-8xl">
+            <h1 className="mt-6 font-display text-4xl font-black uppercase leading-[0.95] tracking-tight sm:text-6xl md:text-7xl">
               <span className="block chrome-text neon-text">Welcome back</span>
               <span className="block chrome-text neon-text">to Vice City.</span>
             </h1>
-            <p className="mt-6 max-w-2xl text-base text-vc-muted sm:text-lg">
+            <p className="mt-6 max-w-2xl text-sm sm:text-base text-vc-muted sm:text-lg">
               {SITE.tagline} Every leak, trailer frame, and rumor — tagged{" "}
-              <span className="text-emerald-300">Verified</span>,{" "}
-              <span className="text-vc-yellow">Rumor</span>, or{" "}
-              <span className="text-vc-pink">Debunked</span> so you always know
-              what&apos;s real.
+              <span className="text-emerald-300">Verified</span>
+              {" "}, <span className="text-vc-yellow">Rumor</span>
+              {" "}, or <span className="text-vc-pink">Debunked</span>
+              {" "}so you always know what&apos;s real.
             </p>
 
             <div className="mt-10 w-full">
-              <div className="mx-auto inline-block rounded-2xl border border-vc-border bg-black/60 px-4 py-5 sm:px-8 sm:py-7 neon-border">
-                <div className="mb-3 text-center font-mono text-[10px] uppercase tracking-[0.4em] text-vc-muted">
+              <div className="text-center">
+                <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.4em] text-vc-muted">
                   Launch Countdown &middot; 19 November 2026
                 </div>
-                <Countdown targetISO={SITE.releaseDate} />
+                <Countdown />
               </div>
             </div>
 
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
               <Link
                 href="/news"
-                className="inline-flex h-11 items-center justify-center rounded-full bg-vc-pink px-6 font-mono text-xs font-bold uppercase tracking-[0.25em] text-black transition-transform hover:-translate-y-0.5"
+                className="inline-flex h-12 sm:h-11 items-center justify-center rounded-full bg-vc-pink px-6 sm:px-6 py-3 sm:py-0 font-mono text-xs sm:text-xs font-bold uppercase tracking-[0.25em] text-black transition-transform hover:-translate-y-0.5 active:translate-y-0"
               >
                 Read the news
               </Link>
               <Link
                 href="/about"
-                className="inline-flex h-11 items-center justify-center rounded-full border border-vc-cyan/60 bg-transparent px-6 font-mono text-xs font-bold uppercase tracking-[0.25em] text-vc-cyan transition-colors hover:bg-vc-cyan/10"
+                className="inline-flex h-12 sm:h-11 items-center justify-center rounded-full border border-vc-cyan/60 bg-transparent px-6 sm:px-6 py-3 sm:py-0 font-mono text-xs sm:text-xs font-bold uppercase tracking-[0.25em] text-vc-cyan transition-colors hover:bg-vc-cyan/10 active:bg-vc-cyan/5"
               >
                 About the Vault
               </Link>
