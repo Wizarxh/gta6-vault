@@ -1,4 +1,5 @@
 import { Orbitron, Inter, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -98,12 +99,21 @@ export default function RootLayout({ children }) {
     >
       <head>
         <SchemaMarkup />
-        {/* Google Analytics */}
-        <script
-          async
+      </head>
+      <body className="min-h-full flex flex-col relative z-10">
+        <SchemaMarkup />
+        <VideoBackground />
+        <Header />
+        <main className="flex-1 relative z-30">{children}</main>
+        <Footer />
+        {/* Google Analytics 4 */}
+        <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-T7GC4N72SM"
+          strategy="afterInteractive"
         />
-        <script
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -113,13 +123,6 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
-      </head>
-      <body className="min-h-full flex flex-col relative z-10">
-        <SchemaMarkup />
-        <VideoBackground />
-        <Header />
-        <main className="flex-1 relative z-30">{children}</main>
-        <Footer />
       </body>
     </html>
   );
