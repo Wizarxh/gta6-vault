@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { XMarkIcon } from "@heroicons/react/24/solid";
 
 export default function PreOrderModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,9 +58,9 @@ export default function PreOrderModal() {
         {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute right-4 top-4 p-2 text-vc-muted hover:text-white transition-colors"
+          className="absolute right-4 top-4 p-2 text-vc-muted hover:text-white transition-colors text-2xl font-bold"
         >
-          <XMarkIcon className="w-5 h-5" />
+          ×
         </button>
 
         {!submitted ? (
