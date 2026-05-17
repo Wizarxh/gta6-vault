@@ -1,19 +1,30 @@
 import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
 import { getAllArticles, paginate } from "@/lib/articles";
-import { SITE } from "@/lib/site";
+import { SITE, NEWS_SEO } from "@/lib/site";
 
 const PER_PAGE = 6;
 
 export const metadata = {
-  title: "News",
-  description: `Every GTA 6 dispatch — verified, rumor, or debunked. The full ${SITE.name} archive.`,
-  alternates: { canonical: "/news" },
+  title: NEWS_SEO.title,
+  description: NEWS_SEO.description,
+  alternates: {
+    canonical: "/news",
+    languages: {
+      "en-US": "/news",
+      "fr": "/fr/news",
+    },
+  },
   openGraph: {
-    title: `News — ${SITE.name}`,
-    description: `Every GTA 6 dispatch — verified, rumor, or debunked.`,
+    title: NEWS_SEO.title,
+    description: NEWS_SEO.description,
     url: "/news",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: NEWS_SEO.title,
+    description: NEWS_SEO.description,
   },
 };
 

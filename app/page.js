@@ -7,16 +7,28 @@ import {
   getBreakingArticles,
   getRecentArticles,
 } from "@/lib/articles";
-import { SITE } from "@/lib/site";
+import { SITE, HOME_SEO } from "@/lib/site";
 
 export const metadata = {
-  title: `${SITE.name} — ${SITE.tagline}`,
-  description: SITE.description,
-  alternates: { canonical: "/" },
+  title: HOME_SEO.title,
+  description: HOME_SEO.description,
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/",
+      "fr": "/fr",
+    },
+  },
   openGraph: {
-    title: `${SITE.name} — ${SITE.tagline}`,
-    description: SITE.description,
+    title: HOME_SEO.title,
+    description: HOME_SEO.description,
     url: "/",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: HOME_SEO.title,
+    description: HOME_SEO.description,
   },
 };
 
