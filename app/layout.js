@@ -30,6 +30,9 @@ export const metadata = {
     template: `%s | ${SITE.name}`,
   },
   description: SITE.description,
+  verification: {
+    google: "kkhQg1WRf7EG63kQyuQQ68MYPpwIvWMvsP2W8XSNO-c",
+  },
   applicationName: SITE.name,
   keywords: [
     "GTA 6",
