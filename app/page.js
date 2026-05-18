@@ -74,28 +74,6 @@ export default function HomePage() {
                 </div>
                 <Countdown />
               </div>
-              
-              {/* Platform Logos under Countdown */}
-              <div className="mt-8 flex justify-center gap-6 sm:gap-12">
-                <div className="group cursor-pointer hover:opacity-80 transition-opacity">
-                  <Image
-                    src="/logos/PS5-Logo-PNG-Image.png"
-                    alt="PlayStation 5"
-                    width={80}
-                    height={80}
-                    className="h-12 sm:h-16 w-auto object-contain"
-                  />
-                </div>
-                <div className="group cursor-pointer hover:opacity-80 transition-opacity">
-                  <Image
-                    src="/logos/X_Xbox_Series_X_S_black.png"
-                    alt="Xbox Series X|S"
-                    width={80}
-                    height={80}
-                    className="h-12 sm:h-16 w-auto object-contain"
-                  />
-                </div>
-              </div>
             </div>
 
             {/* Pre-Order Section */}
@@ -114,12 +92,8 @@ export default function HomePage() {
                     alt="PlayStation 5"
                     width={80}
                     height={80}
-                    className="h-16 w-auto mx-auto mb-3"
+                    className="h-20 w-auto mx-auto mb-6 brightness-0 invert"
                   />
-                  <h4 className="font-mono text-sm font-bold uppercase tracking-[0.2em] text-white">
-                    PlayStation 5
-                  </h4>
-                  <p className="mt-2 text-xs text-vc-muted">Ultra HD • 60 FPS</p>
                   <div className="mt-4">
                     <PreOrderCTA />
                   </div>
@@ -132,12 +106,8 @@ export default function HomePage() {
                     alt="Xbox Series X|S"
                     width={80}
                     height={80}
-                    className="h-16 w-auto mx-auto mb-3"
+                    className="h-20 w-auto mx-auto mb-6 brightness-0 invert"
                   />
-                  <h4 className="font-mono text-sm font-bold uppercase tracking-[0.2em] text-white">
-                    Xbox Series X|S
-                  </h4>
-                  <p className="mt-2 text-xs text-vc-muted">4K • 60 FPS</p>
                   <div className="mt-4">
                     <PreOrderCTA />
                   </div>

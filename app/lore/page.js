@@ -91,15 +91,16 @@ const characters = [
     title: "Supporting Character",
     status: "IMPORTANT",
     image: "/images/people/Cal Hampton/Cal_Hampton_01.jpg",
-    bio: "Part of Vice City's diverse cast of characters. Cal represents the interconnected network of criminals, associates, and players in Lucia and Jason's world.",
-    role: "Vice City Associate",
+    bio: "An internet conspiracy theorist with a skeptical worldview. Cal is a close friend of Jason and fellow associate of Brian Heder. He prefers to stay home rather than venture into danger.",
+    role: "Jason's Friend & Conspiracy Theorist",
     backstory: [
-      "Player in Vice City underworld",
-      "Connected to main characters",
-      "Part of larger criminal ecosystem",
+      "Childhood friend of Jason Duval",
+      "Internet conspiracy theorist with skeptical worldview",
+      "Associate of Brian Heder",
+      "Prefers staying home over taking risks",
     ],
     introduced: "Trailer 2",
-    significance: "Supporting player in main storyline",
+    significance: "Close confidant in Jason's network",
   },
   {
     id: "boobie",
@@ -107,15 +108,16 @@ const characters = [
     title: "Supporting Character",
     status: "IMPORTANT",
     image: "/images/people/Boobie Ike/Boobie_Ike_01.jpg",
-    bio: "Part of Vice City's criminal network. Boobie Ike is one of many characters intersecting with Lucia and Jason's criminal journey through Leonida.",
-    role: "Vice City Criminal",
+    bio: "A prominent strip club mogul and key figure in Vice City's nightlife and underground economy. Boobie Ike controls significant territory and influence in the criminal underworld.",
+    role: "Strip Club Mogul",
     backstory: [
-      "Member of Vice City underworld",
-      "Connected to main plot",
-      "Part of larger story ecosystem",
+      "Runs multiple strip clubs in Vice City",
+      "Significant power in Vice City underworld",
+      "Connected to main characters through business dealings",
+      "Controls valuable territory and assets",
     ],
     introduced: "Trailer 2",
-    significance: "Supporting character in Vice City storyline",
+    significance: "Key power broker in Vice City",
   },
   {
     id: "drequan",
@@ -123,15 +125,16 @@ const characters = [
     title: "Supporting Character",
     status: "IMPORTANT",
     image: "/images/people/DreQuan Priest/DreQuan_Priest_01.jpg",
-    bio: "Part of the rich tapestry of Vice City characters. DreQuan plays a role in the interconnected world of crime and survival that Lucia and Jason navigate.",
-    role: "Vice City Player",
+    bio: "A notable figure in Vice City's criminal ecosystem. DreQuan plays a significant role in the power dynamics of the city, representing one of many players in Lucia and Jason's world.",
+    role: "Vice City Operator",
     backstory: [
-      "Character in Vice City ecosystem",
-      "Connected to main characters' journey",
-      "Part of criminal underworld",
+      "Established player in Vice City crime scene",
+      "Connected to multiple criminal factions",
+      "Part of Vice City power structure",
+      "Plays pivotal role in storyline",
     ],
     introduced: "Trailer 2",
-    significance: "Supporting player in Leonida story",
+    significance: "Key figure in Vice City ecosystem",
   },
   {
     id: "real",
@@ -139,15 +142,16 @@ const characters = [
     title: "Supporting Character",
     status: "IMPORTANT",
     image: "/images/people/Real Dimez/Real_Dimez_01.jpg",
-    bio: "A character with a unique presence in Vice City's underworld. Real Dimez is part of the diverse cast shaping the story of GTA 6.",
-    role: "Vice City Associate",
+    bio: "A female rap duo and cultural influencers in Vice City. Real Dimez represents the modern, vibrant entertainment and music scene that defines contemporary Vice City.",
+    role: "Rap Duo & Cultural Icons",
     backstory: [
-      "Notable figure in Vice City",
-      "Unique backstory and presence",
-      "Part of main narrative ecosystem",
+      "Female rap duo in Vice City",
+      "Cultural influencers and musicians",
+      "Connected to Vice City's entertainment scene",
+      "Part of contemporary Vice City culture",
     ],
     introduced: "Trailer 2",
-    significance: "Supporting character in Vice City",
+    significance: "Represents modern Vice City culture",
   },
 ];
 
@@ -449,6 +453,79 @@ export default function LorePage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="border-t border-vc-border py-16 sm:py-20 bg-black/30">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <h2 className="font-display text-3xl font-bold uppercase tracking-[0.2em]">
+            <span className="text-vc-cyan">{"//"}</span> Gallery
+          </h2>
+
+          {/* Character Gallery */}
+          <div className="mt-10">
+            <h3 className="font-mono text-sm uppercase tracking-[0.3em] text-vc-cyan mb-6">
+              Character Shots
+            </h3>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                { src: "/images/people/Lucia Caminos/Lucia_Caminos_02.jpg", alt: "Lucia" },
+                { src: "/images/people/Jason Duval/Jason_Duval_02.jpg", alt: "Jason" },
+                { src: "/images/people/Raul Bautista/Raul_Bautista_02.jpg", alt: "Raul" },
+                { src: "/images/people/Brian Heder/Brian_Heder_02.jpg", alt: "Brian" },
+                { src: "/images/people/Cal Hampton/Cal_Hampton_02.jpg", alt: "Cal" },
+                { src: "/images/people/Boobie Ike/Boobie_Ike_02.jpg", alt: "Boobie" },
+                { src: "/images/people/DreQuan Priest/DreQuan_Priest_02.jpg", alt: "DreQuan" },
+                { src: "/images/people/Real Dimez/Real_Dimez_02.jpg", alt: "Real" },
+              ].map((img, idx) => (
+                <div
+                  key={idx}
+                  className="rounded-lg overflow-hidden border border-vc-border/50 hover:border-vc-cyan/50 transition-colors group cursor-pointer"
+                >
+                  <div className="relative w-full h-56 bg-black/60 overflow-hidden">
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Location Gallery */}
+          <div className="mt-12">
+            <h3 className="font-mono text-sm uppercase tracking-[0.3em] text-vc-cyan mb-6">
+              Location Shots
+            </h3>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                { src: "/images/places/Vice City/Vice_City_02.jpg", alt: "Vice City" },
+                { src: "/images/places/Vice City/Vice_City_04.jpg", alt: "Vice City" },
+                { src: "/images/places/Leonida Keys/Leonida_Keys_02.jpg", alt: "Leonida Keys" },
+                { src: "/images/places/Mount Kalaga National Park/Mount_Kalaga_National_Park_02.jpg", alt: "Mount Kalaga" },
+                { src: "/images/places/Port Gellhorn/Port_Gellhorn_02.jpg", alt: "Port Gellhorn" },
+                { src: "/images/places/Ambrosia/Ambrosia_02.jpg", alt: "Ambrosia" },
+              ].map((img, idx) => (
+                <div
+                  key={idx}
+                  className="rounded-lg overflow-hidden border border-vc-border/50 hover:border-vc-cyan/50 transition-colors group cursor-pointer"
+                >
+                  <div className="relative w-full h-48 bg-black/60 overflow-hidden">
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

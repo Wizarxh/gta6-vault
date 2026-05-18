@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import JoinUsMenu from "./JoinUsMenu";
 import { SITE } from "@/lib/site";
 import logo from "@/public/logo.png";
 
@@ -95,6 +96,7 @@ export default function Header() {
                 {l.label}
               </Link>
             ))}
+            <JoinUsMenu />
             <div className="ml-2 border-l border-vc-border pl-2 relative">
               <div className="flex items-center gap-1 px-3 py-2 rounded-md font-mono text-xs uppercase tracking-[0.25em] text-vc-muted">
                 EN
