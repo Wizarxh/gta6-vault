@@ -9,13 +9,17 @@ import logo from "@/public/logo.png";
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/news", label: "News" },
+  { href: "/lore", label: "Game World" },
+  { href: "/tips", label: "Guides" },
   { href: "/about", label: "About" },
-  { href: "/newsletter", label: "Newsletter" },
 ];
 
 const LANGUAGES = [
   { code: "en", label: "English" },
   { code: "fr", label: "Français" },
+  { code: "es", label: "Español" },
+  { code: "de", label: "Deutsch" },
+  { code: "pt", label: "Português" },
 ];
 
 export default function Header() {
@@ -26,22 +30,30 @@ export default function Header() {
 
   useEffect(() => {
     setMounted(true);
-    const isFreench = window.location.pathname.startsWith("/fr");
-    setCurrentLang(isFreench ? "fr" : "en");
+    const pathname = window.location.pathname;
+    if (pathname.startsWith("/fr")) setCurrentLang("fr");
+    else if (pathname.startsWith("/es")) setCurrentLang("es");
+    else if (pathname.startsWith("/de")) setCurrentLang("de");
+    else if (pathname.startsWith("/pt")) setCurrentLang("pt");
+    else setCurrentLang("en");
   }, []);
 
   const switchLanguage = (code) => {
     const currentPath = window.location.pathname;
     let newPath = currentPath;
 
-    if (code === "fr") {
-      if (!currentPath.startsWith("/fr")) {
-        newPath = "/fr" + (currentPath === "/" ? "" : currentPath);
-      }
+    // Remove existing language prefix
+    let cleanPath = currentPath;
+    if (currentPath.startsWith("/fr")) cleanPath = currentPath.replace(/^\/fr/, "") || "/";
+    else if (currentPath.startsWith("/es")) cleanPath = currentPath.replace(/^\/es/, "") || "/";
+    else if (currentPath.startsWith("/de")) cleanPath = currentPath.replace(/^\/de/, "") || "/";
+    else if (currentPath.startsWith("/pt")) cleanPath = currentPath.replace(/^\/pt/, "") || "/";
+
+    // Add new language prefix if not English
+    if (code !== "en") {
+      newPath = "/" + code + (cleanPath === "/" ? "" : cleanPath);
     } else {
-      if (currentPath.startsWith("/fr")) {
-        newPath = currentPath.replace(/^\/fr/, "") || "/";
-      }
+      newPath = cleanPath;
     }
 
     window.location.href = newPath;

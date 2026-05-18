@@ -1,42 +1,30 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-export default function PreOrderModal() {
+/**
+ * PreOrderButton - Trigger for pre-order notification modal
+ * Use this in your homepage or product pages
+ */
+export function PreOrderButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [hasSeenModal, setHasSeenModal] = useState(false);
-
-  useEffect(() => {
-    // Check if user already closed/submitted
-    const hasVisited = sessionStorage.getItem("preorder-modal-visited");
-    if (!hasVisited && !hasSeenModal) {
-      // Show modal after 3 seconds
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, []);
 
   const handleClose = () => {
     setIsOpen(false);
-    sessionStorage.setItem("preorder-modal-visited", "true");
+    setEmail("");
+    setSubmitted(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Log email to console (replace with actual API call)
-    console.log("Pre-order notification signup:", email);
-    
+
     try {
-      // TODO: Replace with your actual newsletter API endpoint
       const response = await fetch("/api/newsletter/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, source: "preorder-modal" }),
+        body: JSON.stringify({ email, source: "preorder-button" }),
       });
 
       if (response.ok) {
@@ -50,6 +38,41 @@ export default function PreOrderModal() {
     }
   };
 
+  return (
+    <>
+      <button
+        onClick={() => setIsOpen(true)}
+        className="w-full rounded-lg bg-vc-cyan/10 px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.2em] text-vc-cyan hover:bg-vc-cyan/20 transition-colors"
+      >
+        Notify Me
+      </button>
+
+      {/* Modal */}
+      {isOpen && (
+        <PreOrderModal
+          isOpen={isOpen}
+          onClose={handleClose}
+          email={email}
+          setEmail={setEmail}
+          submitted={submitted}
+          onSubmit={handleSubmit}
+        />
+      )}
+    </>
+  );
+}
+
+/**
+ * PreOrderModal - Modal component for email signup
+ */
+function PreOrderModal({
+  isOpen,
+  onClose,
+  email,
+  setEmail,
+  submitted,
+  onSubmit,
+}) {
   if (!isOpen) return null;
 
   return (
@@ -57,7 +80,7 @@ export default function PreOrderModal() {
       <div className="relative w-full max-w-lg rounded-xl border border-vc-border bg-black/95 p-8 shadow-2xl">
         {/* Close Button */}
         <button
-          onClick={handleClose}
+          onClick={onClose}
           className="absolute right-4 top-4 p-2 text-vc-muted hover:text-white transition-colors text-2xl font-bold"
         >
           ×
@@ -83,7 +106,9 @@ export default function PreOrderModal() {
                     <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22.5C6.2 22.5 1.5 17.8 1.5 12S6.2 1.5 12 1.5 22.5 6.2 22.5 12 17.8 22.5 12 22.5z" />
                   </svg>
                 </div>
-                <span className="text-xs font-mono text-vc-muted">PlayStation 5</span>
+                <span className="text-xs font-mono text-vc-muted">
+                  PlayStation 5
+                </span>
               </div>
 
               <div className="flex flex-col items-center gap-2">
@@ -92,12 +117,14 @@ export default function PreOrderModal() {
                     <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22.5C6.2 22.5 1.5 17.8 1.5 12S6.2 1.5 12 1.5 22.5 6.2 22.5 12 17.8 22.5 12 22.5z" />
                   </svg>
                 </div>
-                <span className="text-xs font-mono text-vc-muted">Xbox Series X|S</span>
+                <span className="text-xs font-mono text-vc-muted">
+                  Xbox Series X|S
+                </span>
               </div>
             </div>
 
             {/* Email Form */}
-            <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+            <form onSubmit={onSubmit} className="mt-8 space-y-4">
               <div>
                 <label className="block text-xs font-mono uppercase tracking-[0.2em] text-vc-muted mb-2">
                   Your Email
@@ -140,3 +167,6 @@ export default function PreOrderModal() {
     </div>
   );
 }
+
+// Export both as named exports
+export default PreOrderButton;

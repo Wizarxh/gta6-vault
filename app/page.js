@@ -2,7 +2,8 @@ import Link from "next/link";
 import Countdown from "@/components/Countdown";
 import ArticleCard from "@/components/ArticleCard";
 import BreakingTicker from "@/components/BreakingTicker";
-import PreOrderModal from "@/components/PreOrderModal";
+import { PreOrderButton } from "@/components/PreOrderModal";
+import { PreOrderCTA } from "@/components/PreOrderCTA";
 import {
   getAllArticles,
   getBreakingArticles,
@@ -40,7 +41,6 @@ export default function HomePage() {
 
   return (
     <>
-      <PreOrderModal />
       <BreakingTicker items={breaking} />
 
       <section className="relative isolate overflow-hidden scanline">
@@ -95,9 +95,9 @@ export default function HomePage() {
                     PlayStation 5
                   </h4>
                   <p className="mt-2 text-xs text-vc-muted">Ultra HD • 60 FPS</p>
-                  <button className="mt-4 w-full rounded-lg bg-vc-cyan/10 px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.2em] text-vc-cyan hover:bg-vc-cyan/20 transition-colors">
-                    Notify Me
-                  </button>
+                  <div className="mt-4">
+                    <PreOrderCTA />
+                  </div>
                 </div>
                 
                 {/* Xbox */}
@@ -111,9 +111,9 @@ export default function HomePage() {
                     Xbox Series X|S
                   </h4>
                   <p className="mt-2 text-xs text-vc-muted">4K • 60 FPS</p>
-                  <button className="mt-4 w-full rounded-lg bg-vc-cyan/10 px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.2em] text-vc-cyan hover:bg-vc-cyan/20 transition-colors">
-                    Notify Me
-                  </button>
+                  <div className="mt-4">
+                    <PreOrderCTA />
+                  </div>
                 </div>
               </div>
             </div>
