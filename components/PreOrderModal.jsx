@@ -48,17 +48,65 @@ export function PreOrderButton() {
       </button>
 
       {/* Modal */}
-      {isOpen && (
-        <PreOrderModal
-          isOpen={isOpen}
-          onClose={handleClose}
-          email={email}
-          setEmail={setEmail}
-          submitted={submitted}
-          onSubmit={handleSubmit}
-        />
-      )}
+      <PreOrderModal
+        isOpen={isOpen}
+        onClose={handleClose}
+        email={email}
+        setEmail={setEmail}
+        submitted={submitted}
+        onSubmit={handleSubmit}
+      />
     </>
+  );
+}
+
+/**
+ * PreOrderLogoButton - Opens modal when clicking logo
+ * Used for platform logos (PS5, Xbox)
+ */
+export function PreOrderLogoButton() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setEmail("");
+    setSubmitted(false);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, source: "preorder-logo" }),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setTimeout(() => {
+          handleClose();
+        }, 2000);
+      }
+    } catch (error) {
+      console.error("Signup failed:", error);
+    }
+  };
+
+  // Returns only the modal - used as wrapper for logo click
+  return (
+    <PreOrderModal
+      isOpen={isOpen}
+      onClose={handleClose}
+      email={email}
+      setEmail={setEmail}
+      submitted={submitted}
+      onSubmit={handleSubmit}
+      setIsOpen={setIsOpen}
+    />
   );
 }
 
@@ -72,11 +120,12 @@ function PreOrderModal({
   setEmail,
   submitted,
   onSubmit,
+  setIsOpen,
 }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-md p-4">
       <div className="relative w-full max-w-lg rounded-xl border border-vc-border bg-black/95 p-8 shadow-2xl">
         {/* Close Button */}
         <button

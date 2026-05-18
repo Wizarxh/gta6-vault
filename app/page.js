@@ -1,10 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
 import Countdown from "@/components/Countdown";
 import ArticleCard from "@/components/ArticleCard";
 import BreakingTicker from "@/components/BreakingTicker";
-import { PreOrderButton } from "@/components/PreOrderModal";
-import { PreOrderCTA } from "@/components/PreOrderCTA";
+import PreOrderSection from "@/components/PreOrderSection";
+
 import {
   getAllArticles,
   getBreakingArticles,
@@ -77,43 +76,7 @@ export default function HomePage() {
             </div>
 
             {/* Pre-Order Section */}
-            <div className="mt-16 rounded-xl border border-vc-border bg-black/40 p-8 sm:p-12">
-              <h3 className="font-mono text-xs uppercase tracking-[0.3em] text-vc-cyan">Coming Soon</h3>
-              <h2 className="mt-3 font-display text-2xl font-bold text-white">Pre-Order Now</h2>
-              <p className="mt-2 text-sm text-vc-text/80">
-                Get GTA 6 on your platform of choice. Pre-orders opening soon.
-              </p>
-              
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
-                {/* PS5 */}
-                <div className="flex-1 rounded-lg border border-vc-border bg-black/60 p-6 text-center hover:border-vc-cyan/60 transition-colors cursor-pointer group">
-                  <Image
-                    src="/logos/PS5-Logo-PNG-Image.png"
-                    alt="PlayStation 5"
-                    width={80}
-                    height={80}
-                    className="h-20 w-auto mx-auto mb-6 brightness-0 invert"
-                  />
-                  <div className="mt-4">
-                    <PreOrderCTA />
-                  </div>
-                </div>
-                
-                {/* Xbox */}
-                <div className="flex-1 rounded-lg border border-vc-border bg-black/60 p-6 text-center hover:border-vc-cyan/60 transition-colors cursor-pointer group">
-                  <Image
-                    src="/logos/X_Xbox_Series_X_S_black.png"
-                    alt="Xbox Series X|S"
-                    width={80}
-                    height={80}
-                    className="h-20 w-auto mx-auto mb-6 brightness-0 invert"
-                  />
-                  <div className="mt-4">
-                    <PreOrderCTA />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <PreOrderSection />
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
               <Link
