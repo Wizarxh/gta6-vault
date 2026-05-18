@@ -1,9 +1,11 @@
 import { Orbitron, Inter, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import VideoBackground from "@/components/VideoBackground";
 import SchemaMarkup from "@/components/SchemaMarkup";
+import CookieConsent from "@/components/CookieConsent";
 import { SITE } from "@/lib/site";
 
 const display = Orbitron({
@@ -29,6 +31,9 @@ export const metadata = {
     template: `%s | ${SITE.name}`,
   },
   description: SITE.description,
+  verification: {
+    google: "kkhQg1WRf7EG63kQyuQQ68MYPpwIvWMvsP2W8XSNO-c",
+  },
   applicationName: SITE.name,
   keywords: [
     "GTA 6",
@@ -47,9 +52,11 @@ export const metadata = {
   alternates: {
     canonical: "/",
     languages: {
-      "en-US": "/",
-      "fr": "/fr",
-      "x-default": "/",
+      "en-US": `${SITE.url}/`,
+      "en": `${SITE.url}/`,
+      "fr": `${SITE.url}/fr`,
+      "fr-FR": `${SITE.url}/fr`,
+      "x-default": `${SITE.url}/`,
     },
   },
   openGraph: {
@@ -105,6 +112,40 @@ export default function RootLayout({ children }) {
         <Header />
         <main className="flex-1 relative z-30">{children}</main>
         <Footer />
+        <CookieConsent />
+        {/* Google Analytics 4 - GDPR Compliant */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-T7GC4N72SM"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              
+              // Check consent status
+              const consent = localStorage.getItem('gta6vault-consent');
+              const consentStatus = consent ? JSON.parse(consent).accepted : false;
+              
+              // Set initial consent state
+              gtag('consent', 'default', {
+                'analytics_storage': consentStatus ? 'granted' : 'denied',
+                'ad_storage': consentStatus ? 'granted' : 'denied',
+                'ad_user_data': consentStatus ? 'granted' : 'denied',
+                'ad_personalization': consentStatus ? 'granted' : 'denied'
+              });
+              
+              gtag('config', 'G-T7GC4N72SM', {
+                'page_path': window.location.pathname,
+                'anonymize_ip': true
+              });
+            `,
+          }}
+        />
       </body>
     </html>
   );

@@ -2,21 +2,35 @@ import Link from "next/link";
 import Countdown from "@/components/Countdown";
 import ArticleCard from "@/components/ArticleCard";
 import BreakingTicker from "@/components/BreakingTicker";
+import PreOrderSection from "@/components/PreOrderSection";
+
 import {
   getAllArticles,
   getBreakingArticles,
   getRecentArticles,
 } from "@/lib/articles";
-import { SITE } from "@/lib/site";
+import { SITE, HOME_SEO } from "@/lib/site";
 
 export const metadata = {
-  title: `${SITE.name} — ${SITE.tagline}`,
-  description: SITE.description,
-  alternates: { canonical: "/" },
+  title: HOME_SEO.title,
+  description: HOME_SEO.description,
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/",
+      "fr": "/fr",
+    },
+  },
   openGraph: {
-    title: `${SITE.name} — ${SITE.tagline}`,
-    description: SITE.description,
+    title: HOME_SEO.title,
+    description: HOME_SEO.description,
     url: "/",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: HOME_SEO.title,
+    description: HOME_SEO.description,
   },
 };
 
@@ -26,7 +40,7 @@ export default function HomePage() {
   const featured = getAllArticles()[0];
 
   return (
-    <div>
+    <>
       <BreakingTicker items={breaking} />
 
       <section className="relative isolate overflow-hidden scanline">
@@ -61,6 +75,9 @@ export default function HomePage() {
               </div>
             </div>
 
+            {/* Pre-Order Section */}
+            <PreOrderSection />
+
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
               <Link
                 href="/news"
@@ -69,10 +86,16 @@ export default function HomePage() {
                 Read the news
               </Link>
               <Link
-                href="/about"
+                href="/lore"
                 className="inline-flex h-12 sm:h-11 items-center justify-center rounded-full border border-vc-cyan/60 bg-transparent px-6 sm:px-6 py-3 sm:py-0 font-mono text-xs sm:text-xs font-bold uppercase tracking-[0.25em] text-vc-cyan transition-colors hover:bg-vc-cyan/10 active:bg-vc-cyan/5"
               >
-                About the Vault
+                Explore Lore
+              </Link>
+              <Link
+                href="/tips"
+                className="inline-flex h-12 sm:h-11 items-center justify-center rounded-full border border-vc-cyan/60 bg-transparent px-6 sm:px-6 py-3 sm:py-0 font-mono text-xs sm:text-xs font-bold uppercase tracking-[0.25em] text-vc-cyan transition-colors hover:bg-vc-cyan/10 active:bg-vc-cyan/5"
+              >
+                Cheats & Guides
               </Link>
             </div>
           </div>
@@ -146,92 +169,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <section className="mx-auto mt-24 max-w-6xl px-4 sm:px-6 pb-20">
-        <div className="mb-8 text-center">
-          <h2 className="font-display text-3xl font-bold uppercase tracking-[0.2em] text-vc-text sm:text-4xl">
-            <span className="text-vc-pink">Available</span> on
-          </h2>
-          <p className="mt-3 font-mono text-xs uppercase tracking-[0.3em] text-vc-muted">
-            November 19, 2026
-          </p>
-        </div>
-        <div className="grid gap-6 sm:grid-cols-2 max-w-2xl mx-auto">
-          {/* PlayStation 5 */}
-          <div className="group relative flex flex-col items-center justify-center rounded-xl border border-vc-cyan/40 bg-gradient-to-br from-black/60 to-black/40 p-8 transition-all duration-300 hover:border-vc-cyan/80 hover:shadow-[0_0_30px_rgba(0,212,255,0.3)]">
-            <div className="relative w-20 h-20 sm:w-24 sm:h-24 mb-4 flex items-center justify-center">
-              <svg
-                className="w-full h-full filter drop-shadow-[0_0_12px_rgba(0,212,255,0.6)] transition-all group-hover:drop-shadow-[0_0_20px_rgba(0,212,255,0.8)]"
-                viewBox="0 0 200 200"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <defs>
-                  <linearGradient id="ps5-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style={{ stopColor: "#00D4FF", stopOpacity: 1 }} />
-                    <stop offset="100%" style={{ stopColor: "#00A8CC", stopOpacity: 1 }} />
-                  </linearGradient>
-                </defs>
-                <text
-                  x="100"
-                  y="120"
-                  fontSize="80"
-                  fontWeight="900"
-                  textAnchor="middle"
-                  fill="url(#ps5-gradient)"
-                  fontFamily="'Orbitron', sans-serif"
-                  letterSpacing="-4"
-                >
-                  PS5
-                </text>
-              </svg>
-            </div>
-            <h3 className="font-display text-lg sm:text-xl font-bold uppercase tracking-[0.15em] text-vc-cyan group-hover:text-vc-cyan/100 transition-colors">
-              PlayStation 5
-            </h3>
-            <p className="mt-2 text-xs sm:text-sm text-vc-muted text-center">
-              Next-gen adventure
-            </p>
-          </div>
-
-          {/* Xbox Series X|S */}
-          <div className="group relative flex flex-col items-center justify-center rounded-xl border border-vc-pink/40 bg-gradient-to-br from-black/60 to-black/40 p-8 transition-all duration-300 hover:border-vc-pink/80 hover:shadow-[0_0_30px_rgba(255,107,157,0.3)]">
-            <div className="relative w-20 h-20 sm:w-24 sm:h-24 mb-4 flex items-center justify-center">
-              <svg
-                className="w-full h-full filter drop-shadow-[0_0_12px_rgba(255,107,157,0.6)] transition-all group-hover:drop-shadow-[0_0_20px_rgba(255,107,157,0.8)]"
-                viewBox="0 0 200 200"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <defs>
-                  <linearGradient id="xbox-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style={{ stopColor: "#FF6B9D", stopOpacity: 1 }} />
-                    <stop offset="100%" style={{ stopColor: "#FF4081", stopOpacity: 1 }} />
-                  </linearGradient>
-                </defs>
-                <text
-                  x="100"
-                  y="120"
-                  fontSize="80"
-                  fontWeight="900"
-                  textAnchor="middle"
-                  fill="url(#xbox-gradient)"
-                  fontFamily="'Orbitron', sans-serif"
-                  letterSpacing="-4"
-                >
-                  XS|X
-                </text>
-              </svg>
-            </div>
-            <h3 className="font-display text-lg sm:text-xl font-bold uppercase tracking-[0.15em] text-vc-pink group-hover:text-vc-pink/100 transition-colors">
-              Xbox Series X|S
-            </h3>
-            <p className="mt-2 text-xs sm:text-sm text-vc-muted text-center">
-              Ultimate performance
-            </p>
-          </div>
-        </div>
-      </section>
-    </div>
+    </>
   );
 }
