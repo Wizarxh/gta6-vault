@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Countdown from "@/components/Countdown";
 import ArticleCard from "@/components/ArticleCard";
 import BreakingTicker from "@/components/BreakingTicker";
@@ -73,6 +74,28 @@ export default function HomePage() {
                 </div>
                 <Countdown />
               </div>
+              
+              {/* Platform Logos under Countdown */}
+              <div className="mt-8 flex justify-center gap-6 sm:gap-12">
+                <div className="group cursor-pointer hover:opacity-80 transition-opacity">
+                  <Image
+                    src="/logos/PS5-Logo-PNG-Image.png"
+                    alt="PlayStation 5"
+                    width={80}
+                    height={80}
+                    className="h-12 sm:h-16 w-auto object-contain"
+                  />
+                </div>
+                <div className="group cursor-pointer hover:opacity-80 transition-opacity">
+                  <Image
+                    src="/logos/X_Xbox_Series_X_S_black.png"
+                    alt="Xbox Series X|S"
+                    width={80}
+                    height={80}
+                    className="h-12 sm:h-16 w-auto object-contain"
+                  />
+                </div>
+              </div>
             </div>
 
             {/* Pre-Order Section */}
@@ -86,11 +109,13 @@ export default function HomePage() {
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
                 {/* PS5 */}
                 <div className="flex-1 rounded-lg border border-vc-border bg-black/60 p-6 text-center hover:border-vc-cyan/60 transition-colors cursor-pointer group">
-                  <div className="flex justify-center mb-3">
-                    <svg className="w-12 h-12 text-white group-hover:text-vc-cyan transition-colors" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22.5C6.2 22.5 1.5 17.8 1.5 12S6.2 1.5 12 1.5 22.5 6.2 22.5 12 17.8 22.5 12 22.5z" />
-                    </svg>
-                  </div>
+                  <Image
+                    src="/logos/PS5-Logo-PNG-Image.png"
+                    alt="PlayStation 5"
+                    width={80}
+                    height={80}
+                    className="h-16 w-auto mx-auto mb-3"
+                  />
                   <h4 className="font-mono text-sm font-bold uppercase tracking-[0.2em] text-white">
                     PlayStation 5
                   </h4>
@@ -102,11 +127,13 @@ export default function HomePage() {
                 
                 {/* Xbox */}
                 <div className="flex-1 rounded-lg border border-vc-border bg-black/60 p-6 text-center hover:border-vc-cyan/60 transition-colors cursor-pointer group">
-                  <div className="flex justify-center mb-3">
-                    <svg className="w-12 h-12 text-white group-hover:text-vc-cyan transition-colors" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 22.5C6.2 22.5 1.5 17.8 1.5 12S6.2 1.5 12 1.5 22.5 6.2 22.5 12 17.8 22.5 12 22.5z" />
-                    </svg>
-                  </div>
+                  <Image
+                    src="/logos/X_Xbox_Series_X_S_black.png"
+                    alt="Xbox Series X|S"
+                    width={80}
+                    height={80}
+                    className="h-16 w-auto mx-auto mb-3"
+                  />
                   <h4 className="font-mono text-sm font-bold uppercase tracking-[0.2em] text-white">
                     Xbox Series X|S
                   </h4>

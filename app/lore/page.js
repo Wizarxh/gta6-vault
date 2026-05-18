@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { SITE } from "@/lib/site";
 
 export const metadata = {
@@ -20,6 +21,7 @@ const characters = [
     name: "Lucia Caminos",
     title: "Co-Protagonist",
     status: "MAJOR CHARACTER",
+    image: "/images/people/Lucia Caminos/Lucia_Caminos_01.jpg",
     bio: "The first major female protagonist in a mainline GTA single-player story. Fresh out of prison, Lucia is ready to take on Vice City with a desperate hunger for freedom and power. Her story is bound to Jason's by love, crime, and shared ambition to escape their origins.",
     role: "One of two playable protagonists",
     backstory: [
@@ -37,6 +39,7 @@ const characters = [
     name: "Jason Duval",
     title: "Co-Protagonist",
     status: "MAJOR CHARACTER",
+    image: "/images/people/Jason Duval/Jason_Duval_01.jpg",
     bio: "A small-time Leonida Keys criminal whose life expands dramatically after connecting with Lucia. Jason represents the grounded, cautious half of the duo, dealing with landlords, small crimes, and everyday survival until he meets his match in Lucia.",
     role: "One of two playable protagonists",
     backstory: [
@@ -50,10 +53,28 @@ const characters = [
     significance: "Co-lead protagonist with complex emotional arc",
   },
   {
-    id: "brian-heder",
+    id: "raul",
+    name: "Raul Bautista",
+    title: "Major Character",
+    status: "IMPORTANT",
+    image: "/images/people/Raul Bautista/Raul_Bautista_01.jpg",
+    bio: "A seasoned bank robber with experience, confidence, and cunning. Raul is always hunting for talent ready to take the risks that bring the biggest rewards. His recklessness raises the stakes with every score.",
+    role: "Career Criminal & Crew Leader",
+    backstory: [
+      "Experienced and seasoned bank robber",
+      "Recruits talent for major heists",
+      "Known for confidence and charm",
+      "Raises stakes with every operation",
+    ],
+    introduced: "Trailer 2",
+    significance: "Major player in Vice City criminal underworld",
+  },
+  {
+    id: "brian",
     name: "Brian Heder",
     title: "Supporting Character",
     status: "IMPORTANT",
+    image: "/images/people/Brian Heder/Brian_Heder_01.jpg",
     bio: "Appears as Jason's landlord in the trailers, but 'there's more to it than meets the eye' according to official descriptions. His role in the story expands beyond simple landlord interactions.",
     role: "Jason's landlord with hidden depths",
     backstory: [
@@ -62,7 +83,71 @@ const characters = [
       "Connected to Jason's criminal activities",
     ],
     introduced: "Trailer 1",
-    note: "Role details remain mysterious",
+    significance: "Connected to Jason's criminal network",
+  },
+  {
+    id: "cal",
+    name: "Cal Hampton",
+    title: "Supporting Character",
+    status: "IMPORTANT",
+    image: "/images/people/Cal Hampton/Cal_Hampton_01.jpg",
+    bio: "Part of Vice City's diverse cast of characters. Cal represents the interconnected network of criminals, associates, and players in Lucia and Jason's world.",
+    role: "Vice City Associate",
+    backstory: [
+      "Player in Vice City underworld",
+      "Connected to main characters",
+      "Part of larger criminal ecosystem",
+    ],
+    introduced: "Trailer 2",
+    significance: "Supporting player in main storyline",
+  },
+  {
+    id: "boobie",
+    name: "Boobie Ike",
+    title: "Supporting Character",
+    status: "IMPORTANT",
+    image: "/images/people/Boobie Ike/Boobie_Ike_01.jpg",
+    bio: "Part of Vice City's criminal network. Boobie Ike is one of many characters intersecting with Lucia and Jason's criminal journey through Leonida.",
+    role: "Vice City Criminal",
+    backstory: [
+      "Member of Vice City underworld",
+      "Connected to main plot",
+      "Part of larger story ecosystem",
+    ],
+    introduced: "Trailer 2",
+    significance: "Supporting character in Vice City storyline",
+  },
+  {
+    id: "drequan",
+    name: "DreQuan Priest",
+    title: "Supporting Character",
+    status: "IMPORTANT",
+    image: "/images/people/DreQuan Priest/DreQuan_Priest_01.jpg",
+    bio: "Part of the rich tapestry of Vice City characters. DreQuan plays a role in the interconnected world of crime and survival that Lucia and Jason navigate.",
+    role: "Vice City Player",
+    backstory: [
+      "Character in Vice City ecosystem",
+      "Connected to main characters' journey",
+      "Part of criminal underworld",
+    ],
+    introduced: "Trailer 2",
+    significance: "Supporting player in Leonida story",
+  },
+  {
+    id: "real",
+    name: "Real Dimez",
+    title: "Supporting Character",
+    status: "IMPORTANT",
+    image: "/images/people/Real Dimez/Real_Dimez_01.jpg",
+    bio: "A character with a unique presence in Vice City's underworld. Real Dimez is part of the diverse cast shaping the story of GTA 6.",
+    role: "Vice City Associate",
+    backstory: [
+      "Notable figure in Vice City",
+      "Unique backstory and presence",
+      "Part of main narrative ecosystem",
+    ],
+    introduced: "Trailer 2",
+    significance: "Supporting character in Vice City",
   },
 ];
 
@@ -71,8 +156,9 @@ const locations = [
     id: "vice-city",
     name: "Vice City",
     type: "PRIMARY LOCATION",
+    image: "/images/places/Vice City/Vice_City_01.jpg",
     description:
-      "The neon-soaked heart of Leonida. Vice City is the glamorous, dangerous epicenter of Vice City, filled with opportunities, danger, and the criminal underworld that Lucia and Jason must navigate.",
+      "The neon-soaked heart of Leonida. Vice City is the glamorous, dangerous epicenter of the game, filled with opportunities, danger, and the criminal underworld that Lucia and Jason must navigate.",
     features: [
       "Neon-soaked streets",
       "Vibrant nightlife and clubs",
@@ -83,28 +169,56 @@ const locations = [
     era: "Modern (2026)",
   },
   {
-    id: "leonida",
-    name: "Leonida",
-    type: "GAME WORLD",
-    description:
-      "The state housing Vice City and surrounding areas. Leonida is massive, promising to be 2-2.5x larger than GTA V's map. It features diverse biomes, from Vice City's urban sprawl to rural areas and beyond.",
-    features: [
-      "Vice City urban core",
-      "Rural areas and outskirts",
-      "Multiple distinct regions",
-      "700+ named locations",
-      "Diverse environments and biomes",
-    ],
-    mapSize: "2-2.5x larger than GTA V",
-  },
-  {
     id: "leonida-keys",
     name: "Leonida Keys",
     type: "REGION",
+    image: "/images/places/Leonida Keys/Leonida_Keys_01.jpg",
     description:
       "The keys region of Leonida where Jason originates. A smaller-scale criminal territory before his partnership with Lucia.",
     features: ["Jason's origin location", "Small-time criminal hub", "Island setting"],
     significance: "Jason's homeland and starting point",
+  },
+  {
+    id: "ambrosia",
+    name: "Ambrosia",
+    type: "REGION",
+    image: "/images/places/Ambrosia/Ambrosia_01.jpg",
+    description: "A distinct region within Leonida offering its own unique flavor and opportunities.",
+    features: ["Distinct location", "Opportunities and danger", "Part of Leonida"],
+    significance: "Important location in game world",
+  },
+  {
+    id: "port-gellhorn",
+    name: "Port Gellhorn",
+    type: "LOCATION",
+    image: "/images/places/Port Gellhorn/Port_Gellhorn_01.jpg",
+    description: "A port region in Leonida. Strategic location with connections to the wider criminal ecosystem.",
+    features: ["Port access", "Trade and smuggling hub", "Coastal location"],
+    significance: "Strategic location for operations",
+  },
+  {
+    id: "mount-kalaga",
+    name: "Mount Kalaga National Park",
+    type: "NATURAL AREA",
+    image: "/images/places/Mount Kalaga National Park/Mount_Kalaga_01.jpg",
+    description:
+      "A natural area within Leonida. Provides contrast to the urban environments of Vice City.",
+    features: [
+      "Natural environment",
+      "National park",
+      "Exploration opportunities",
+    ],
+    significance: "Exploration and variety in map",
+  },
+  {
+    id: "grassrivers",
+    name: "Grassrivers",
+    type: "REGION",
+    image: "/images/places/Grassrivers/Grassrivers_01.jpg",
+    description:
+      "Another distinct region of Leonida with its own character and opportunities.",
+    features: ["Distinct region", "Unique environments", "Exploration zones"],
+    significance: "Part of larger Leonida map",
   },
 ];
 
@@ -185,67 +299,86 @@ export default function LorePage() {
             <span className="text-vc-cyan">{"//"}</span> Characters
           </h2>
 
-          <div className="mt-10 space-y-8">
+          <div className="mt-10 grid gap-8 lg:grid-cols-2">
             {characters.map((char) => (
               <div
                 key={char.id}
-                className="rounded-xl border border-vc-border bg-black/30 p-8"
+                className="rounded-xl border border-vc-border bg-black/30 overflow-hidden hover:border-vc-cyan/50 transition-colors"
               >
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                  <div>
-                    <span className="inline-flex rounded-full bg-vc-cyan/20 px-3 py-1 text-xs font-mono font-bold uppercase text-vc-cyan">
-                      {char.status}
-                    </span>
-                    <h3 className="mt-3 font-display text-2xl font-bold text-white">
-                      {char.name}
-                    </h3>
-                    <p className="text-vc-text/70">{char.title}</p>
-                  </div>
-                  <div className="text-right text-sm text-vc-muted">
-                    <p>
-                      <strong>Introduced:</strong> {char.introduced}
-                    </p>
-                    {char.actress && <p>Voice/Actor: {char.actress}</p>}
-                    {char.actor && <p>Voice/Actor: {char.actor}</p>}
-                  </div>
-                </div>
-
-                <p className="mt-4 leading-relaxed text-vc-text">{char.bio}</p>
-
-                <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                  <div>
-                    <h4 className="font-mono text-sm font-bold uppercase text-vc-cyan">
-                      Role
-                    </h4>
-                    <p className="mt-2 text-sm text-vc-text/80">{char.role}</p>
-                  </div>
-                  {char.significance && (
-                    <div>
-                      <h4 className="font-mono text-sm font-bold uppercase text-vc-cyan">
-                        Significance
-                      </h4>
-                      <p className="mt-2 text-sm text-vc-text/80">
-                        {char.significance}
-                      </p>
-                    </div>
-                  )}
-                </div>
-
-                {char.backstory && (
-                  <div className="mt-6 border-t border-vc-border/50 pt-6">
-                    <h4 className="font-mono text-sm font-bold uppercase text-vc-cyan">
-                      Backstory
-                    </h4>
-                    <ul className="mt-3 space-y-2">
-                      {char.backstory.map((point, i) => (
-                        <li key={i} className="flex gap-2 text-sm text-vc-text/80">
-                          <span className="text-vc-pink">•</span>
-                          <span>{point}</span>
-                        </li>
-                      ))}
-                    </ul>
+                {/* Character Image */}
+                {char.image && (
+                  <div className="relative w-full h-64 bg-black/60">
+                    <Image
+                      src={char.image}
+                      alt={char.name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                 )}
+
+                {/* Character Info */}
+                <div className="p-6">
+                  <span className="inline-flex rounded-full bg-vc-cyan/20 px-3 py-1 text-xs font-mono font-bold uppercase text-vc-cyan">
+                    {char.status}
+                  </span>
+                  <h3 className="mt-3 font-display text-2xl font-bold text-white">
+                    {char.name}
+                  </h3>
+                  <p className="text-vc-text/70">{char.title}</p>
+
+                  <p className="mt-4 leading-relaxed text-vc-text/90">
+                    {char.bio}
+                  </p>
+
+                  <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <h4 className="font-mono text-sm font-bold uppercase text-vc-cyan">
+                        Role
+                      </h4>
+                      <p className="mt-2 text-sm text-vc-text/80">
+                        {char.role}
+                      </p>
+                    </div>
+                    {char.significance && (
+                      <div>
+                        <h4 className="font-mono text-sm font-bold uppercase text-vc-cyan">
+                          Significance
+                        </h4>
+                        <p className="mt-2 text-sm text-vc-text/80">
+                          {char.significance}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  {char.backstory && (
+                    <div className="mt-6 border-t border-vc-border/50 pt-6">
+                      <h4 className="font-mono text-sm font-bold uppercase text-vc-cyan">
+                        Backstory
+                      </h4>
+                      <ul className="mt-3 space-y-2">
+                        {char.backstory.map((point, i) => (
+                          <li
+                            key={i}
+                            className="flex gap-2 text-sm text-vc-text/80"
+                          >
+                            <span className="text-vc-pink">•</span>
+                            <span>{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  <div className="mt-4 flex flex-wrap gap-2 text-xs text-vc-muted">
+                    {char.actress && <span>🎭 {char.actress}</span>}
+                    {char.actor && <span>🎭 {char.actor}</span>}
+                    {char.introduced && (
+                      <span>📺 {char.introduced}</span>
+                    )}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -259,41 +392,61 @@ export default function LorePage() {
             <span className="text-vc-cyan">{"//"}</span> Locations
           </h2>
 
-          <div className="mt-10 space-y-8">
+          <div className="mt-10 grid gap-8 lg:grid-cols-2">
             {locations.map((loc) => (
               <div
                 key={loc.id}
-                className="rounded-xl border border-vc-border bg-black/30 p-8"
+                className="rounded-xl border border-vc-border bg-black/30 overflow-hidden hover:border-vc-cyan/50 transition-colors"
               >
-                <span className="inline-flex rounded-full bg-vc-cyan/20 px-3 py-1 text-xs font-mono font-bold uppercase text-vc-cyan">
-                  {loc.type}
-                </span>
-                <h3 className="mt-3 font-display text-2xl font-bold text-white">
-                  {loc.name}
-                </h3>
-                <p className="mt-2 leading-relaxed text-vc-text">{loc.description}</p>
-
-                {loc.features && (
-                  <div className="mt-6">
-                    <h4 className="font-mono text-sm font-bold uppercase text-vc-cyan">
-                      Key Features
-                    </h4>
-                    <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-                      {loc.features.map((feature, i) => (
-                        <li key={i} className="flex gap-2 text-sm text-vc-text/80">
-                          <span className="text-vc-pink">▸</span>
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+                {/* Location Image */}
+                {loc.image && (
+                  <div className="relative w-full h-64 bg-black/60">
+                    <Image
+                      src={loc.image}
+                      alt={loc.name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                 )}
 
-                {loc.mapSize && (
-                  <p className="mt-4 text-sm text-vc-cyan font-mono">
-                    {loc.mapSize}
+                {/* Location Info */}
+                <div className="p-6">
+                  <span className="inline-flex rounded-full bg-vc-cyan/20 px-3 py-1 text-xs font-mono font-bold uppercase text-vc-cyan">
+                    {loc.type}
+                  </span>
+                  <h3 className="mt-3 font-display text-2xl font-bold text-white">
+                    {loc.name}
+                  </h3>
+                  <p className="mt-2 leading-relaxed text-vc-text/90">
+                    {loc.description}
                   </p>
-                )}
+
+                  {loc.features && (
+                    <div className="mt-6">
+                      <h4 className="font-mono text-sm font-bold uppercase text-vc-cyan">
+                        Key Features
+                      </h4>
+                      <ul className="mt-3 space-y-2">
+                        {loc.features.map((feature, i) => (
+                          <li
+                            key={i}
+                            className="flex gap-2 text-sm text-vc-text/80"
+                          >
+                            <span className="text-vc-pink">▸</span>
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {loc.significance && (
+                    <p className="mt-4 text-sm text-vc-cyan font-mono">
+                      {loc.significance}
+                    </p>
+                  )}
+                </div>
               </div>
             ))}
           </div>
