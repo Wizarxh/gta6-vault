@@ -50,39 +50,95 @@ export default function PreOrderSection() {
           Get GTA 6 on your platform of choice. Pre-orders opening soon.
         </p>
 
-        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
+        <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:justify-center">
           {/* PS5 */}
           <div
             onClick={() => setIsModalOpen(true)}
-            className="rounded-lg border border-vc-border bg-black/60 p-8 text-center hover:border-vc-cyan/60 transition-colors cursor-pointer group"
+            className="group relative flex flex-col items-center justify-center rounded-lg border border-vc-cyan/40 bg-gradient-to-br from-black/60 to-black/40 p-8 sm:p-10 transition-all duration-300 hover:border-vc-cyan/80 hover:shadow-[0_0_30px_rgba(0,212,255,0.3)] cursor-pointer"
           >
-            <div className="mb-6 flex justify-center">
-              <Image
-                src="/logos/PS5-Logo-PNG-Image.png"
-                alt="PlayStation 5"
-                width={60}
-                height={60}
-                className="h-12 w-auto brightness-0 invert drop-shadow-lg group-hover:drop-shadow-[0_0_12px_rgba(0,212,255,0.4)] transition-all"
-              />
+            <div className="relative w-20 h-20 mb-6 flex items-center justify-center">
+              <svg
+                className="w-full h-full filter drop-shadow-[0_0_12px_rgba(0,212,255,0.6)] transition-all duration-300 group-hover:drop-shadow-[0_0_24px_rgba(0,212,255,0.8)]"
+                viewBox="0 0 200 200"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <linearGradient id="ps5-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{ stopColor: "#00D4FF", stopOpacity: 1 }} />
+                    <stop offset="100%" style={{ stopColor: "#00A8CC", stopOpacity: 1 }} />
+                  </linearGradient>
+                </defs>
+                <text
+                  x="100"
+                  y="130"
+                  fontSize="90"
+                  fontWeight="900"
+                  textAnchor="middle"
+                  fill="url(#ps5-gradient)"
+                  fontFamily="'Arial Black', sans-serif"
+                  letterSpacing="-3"
+                >
+                  PS5
+                </text>
+              </svg>
             </div>
-            <PreOrderButton />
+            <h3 className="font-display text-lg sm:text-xl font-bold uppercase tracking-[0.15em] text-vc-cyan group-hover:text-vc-cyan/100 transition-colors">
+              PlayStation 5
+            </h3>
+            <p className="mt-2 text-xs sm:text-sm text-vc-muted text-center">
+              Next-gen adventure
+            </p>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="mt-4 px-6 py-2 font-mono text-xs uppercase tracking-[0.2em] border border-vc-cyan/60 text-vc-cyan hover:bg-vc-cyan/10 rounded transition-colors"
+            >
+              Notify Me
+            </button>
           </div>
 
           {/* Xbox */}
           <div
             onClick={() => setIsModalOpen(true)}
-            className="rounded-lg border border-vc-border bg-black/60 p-8 text-center hover:border-vc-cyan/60 transition-colors cursor-pointer group"
+            className="group relative flex flex-col items-center justify-center rounded-lg border border-vc-pink/40 bg-gradient-to-br from-black/60 to-black/40 p-8 sm:p-10 transition-all duration-300 hover:border-vc-pink/80 hover:shadow-[0_0_30px_rgba(255,107,157,0.3)] cursor-pointer"
           >
-            <div className="mb-6 flex justify-center">
-              <Image
-                src="/logos/X_Xbox_Series_X_S_black.png"
-                alt="Xbox Series X|S"
-                width={60}
-                height={60}
-                className="h-12 w-auto brightness-0 invert drop-shadow-lg group-hover:drop-shadow-[0_0_12px_rgba(0,212,255,0.4)] transition-all"
-              />
+            <div className="relative w-20 h-20 mb-6 flex items-center justify-center">
+              <svg
+                className="w-full h-full filter drop-shadow-[0_0_12px_rgba(255,107,157,0.6)] transition-all duration-300 group-hover:drop-shadow-[0_0_24px_rgba(255,107,157,0.8)]"
+                viewBox="0 0 200 200"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <linearGradient id="xbox-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{ stopColor: "#FF6B9D", stopOpacity: 1 }} />
+                    <stop offset="100%" style={{ stopColor: "#FF4081", stopOpacity: 1 }} />
+                  </linearGradient>
+                </defs>
+                <text
+                  x="100"
+                  y="130"
+                  fontSize="80"
+                  fontWeight="900"
+                  textAnchor="middle"
+                  fill="url(#xbox-gradient)"
+                  fontFamily="'Arial Black', sans-serif"
+                  letterSpacing="-2"
+                >
+                  XS|X
+                </text>
+              </svg>
             </div>
-            <PreOrderButton />
+            <h3 className="font-display text-lg sm:text-xl font-bold uppercase tracking-[0.15em] text-vc-pink group-hover:text-vc-pink/100 transition-colors">
+              Xbox Series X|S
+            </h3>
+            <p className="mt-2 text-xs sm:text-sm text-vc-muted text-center">
+              Ultimate performance
+            </p>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="mt-4 px-6 py-2 font-mono text-xs uppercase tracking-[0.2em] border border-vc-pink/60 text-vc-pink hover:bg-vc-pink/10 rounded transition-colors"
+            >
+              Notify Me
+            </button>
           </div>
         </div>
       </div>
